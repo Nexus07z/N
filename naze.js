@@ -3704,7 +3704,7 @@ mediaType: 2,
 mediaUrl: myytv,
 sourceUrl: myyt}}
 }
-naze.sendMessage(m.chat, buttonMessage, {quoted: fdoc})
+naze.sendMessage(m.chat, Menu, {quoted: fdoc})
   }
  break
 
