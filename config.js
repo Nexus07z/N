@@ -66,6 +66,7 @@ global.mygc = "https://chat.whatsapp.com/Cp1OJenk6Q9D9vgLjLU558"
 
 // Engak Ngaruh, Belum Kepasang
 global.botname = 'Nexusᴮᴼᵀ'
+global.apilol = '4fda13ee5ed767eef2174d23'
 global.akulaku = 'Bot By Naze'
 
 

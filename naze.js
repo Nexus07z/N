@@ -3810,11 +3810,12 @@ let alfamart = `628111500959@s.whatsapp.net`
             case 'stickersinfondo':{
                 let respond = `Por favor etiqueta una imagen con el comando: *${prefix + command}*`
                 if (!/image/.test(mime)) throw respond
+                
                 try {       
                 let { TelegraPh } = require('./lib/uploader')
                 let cargador = await naze.downloadAndSaveMediaMessage(qmsg)
                 let link = await TelegraPh(cargador)
-                let contenido = `https://api.lolhuman.xyz/api/removebg?apikey=4fda13ee5ed767eef2174d23&img=${link}`
+                let contenido = `https://api.lolhuman.xyz/api/removebg?apikey=${global.apilol}&img=${link}`
                 let msjsticker = await naze.sendImageAsSticker(m.chat, contenido, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(msjsticker)
                 } catch (e) {
