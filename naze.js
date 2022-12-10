@@ -29,7 +29,6 @@ const google = require('google-it')
 const maker = require('mumaker')
 const naztod = require("tod-api")
 const request = require('request');
-const { apikey, apikeyvh, apiimgbb, prefix } = JSON.parse(fs.readFileSync('./config.json'))
 const textpro = require('./lib/textpro')
 const bochil = require('@bochilteam/scraper')
 const { mediafireDl } = require('./lib/mediafire.js')
