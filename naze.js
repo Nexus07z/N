@@ -2046,26 +2046,8 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 
 
 
-            case 'colores': {
-                if (args.length < 1) throw `*Agrega el texto que deseas convertir en sticker de colores.*\n\n*Por ejemplo:*\n\n*${prefix + command} Nexus*`
-                let teks = encodeURIComponent(args.join(' '))
-                try {
-                let cargador = `https://api.xteam.xyz/attp?file&text=${teks}`
-                
-                let enlace = await naze.sendImageAsSticker(m.chat, cargador, m, { packname: global.packname, author: global.author })
-                await fs.unlinkSync(enlace)
-                } catch (e) {
-                m.reply(`Error\nHarus Pakai Gambar!`)
-                }
-                }
-            break 
-            case 'colored': {
-                oh = `Example : ${prefix + command} 3\n\nIQRA Yang tersedia : 1,2,3,4,5,6`
-                if (!text) throw oh
-                yy = await getBuffer(`https://media.elmostrador.cl/2022/08/Gato-2-468x267.jpg`)
-                naze.sendImageAsSticker(m.chat, yy, m, { packname: global.packname, author: global.author })
-                }
-                break
+         
+       
             
             
             
@@ -2271,12 +2253,7 @@ break
 		}
 	    }
 	    break
-	       case 'attp': case 'ttp': {
-           if (!text) throw `Example : ${prefix + command} text`
-           await naze.sendMedia(m.chat, `https://xteam.xyz/${command}?file&text=${text}`, 'naze', 'dev', m, {asSticker: true})
-
-         }
-         break
+	      
          case 'tts': {
          	if (!text) throw `Example : ${prefix + command} text`
              let tts = await fetchJson(`https://api.akuari.my.id/texttovoice/texttosound_id?query=${text}`)
@@ -3791,25 +3768,6 @@ let alfamart = `628111500959@s.whatsapp.net`
                 }
             break
 
-            case 'sticker2': {
-                let respuestacomando = `${global.mess.etiquetaimgvidl} *${prefix + command}*`
-                if ((!/image/.test(mime)) && (!/video/.test(mime))) throw respuestacomando
-
-                if (/image/.test(mime)) {
-                    let media = await quoted.download()
-                    let encmedia = await naze.sendImageAsSticker(m.chat, media, m, {  })
-                    await fs.unlinkSync(encmedia)
-                } else if (/video/.test(mime)) {
-                    if ((quoted.msg || quoted).seconds > 11) return m.reply(`${global.mess.lims}`)
-                    let media = await quoted.download()
-                    let encmedia = await naze.sendVideoAsSticker(m.chat, media)
-                    await fs.unlinkSync(encmedia)
-                } else {
-                    throw `${global.mess.error}`
-                    }
-                }
-            break
-
             case 'stickerw': {
                 let respuestacomando = `${global.mess.etiquetaimgvidl} *${prefix + command}*`
                 if ((!/image/.test(mime)) && (!/video/.test(mime))) throw respuestacomando
@@ -3888,6 +3846,14 @@ let alfamart = `628111500959@s.whatsapp.net`
                 } catch (e) {
                 m.reply(`${global.mess.error}`)
                 }
+            }
+            break
+
+            case 'attp': case 'ttp': {
+                let respuestacomando = `${global.mess.textocomando} *${prefix + command} Texto*`
+                if (!text) throw respuestacomando
+                await naze.sendMedia(m.chat, `https://xteam.xyz/${command}?file&text=${text}`, 'naze', 'dev', m, {asSticker: true})
+     
             }
             break
         
