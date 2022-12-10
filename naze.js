@@ -2082,16 +2082,19 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
 
 
             case 'colores': {
-                if (args.length < 1) throw '*Agrega el texto que deseas convertir en sticker de colores.*\n\n*Por ejemplo:*\n\n*${prefix + command} Nexus*'
+                if (args.length < 1) throw `*Agrega el texto que deseas convertir en sticker de colores.*\n\n*Por ejemplo:*\n\n*${prefix + command} Nexus*`
                 let teks = encodeURIComponent(args.join(' '))
-                let anu = await fetchJson(`https://api.xteam.xyz/attp?file&text=${teks}`)
-                for (let res of anu.results) {
-                    let encmedia = await naze.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
-                    await fs.unlinkSync(encmedia)
+                try {
+                let cargador = await getBuffer(`https://api.xteam.xyz/attp?file&text=${teks}`)
+                
+                let enlace = await naze.sendImageAsSticker(m.chat, cargador, m, { packname: global.packname, author: global.author })
+                await fs.unlinkSync(enlace)
+                } catch (e) {
+                m.reply(`Error\nHarus Pakai Gambar!`)
                 }
-            }
-            break
-            
+                }
+            break  
+                
             
             /**case 'nulis': case 'nulisteks': {
                 let jawab = `Pilih Nulis Bro\n*1.nuliskanan (tekslu)*\n*2.nuliskiri (tekslu)*\n*3.foliokanan (tekslu)*\n*4.foliokiri (tekslu)*\n\n_Silahkan Dipilih_`
