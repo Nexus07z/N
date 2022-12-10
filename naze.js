@@ -3722,7 +3722,7 @@ let alfamart = `628111500959@s.whatsapp.net`
                 try {
                 segmento = await fetchJson(`https://api.lolhuman.xyz/api/ytvideo?apikey=${global.apilol}&url=${text}`)
                 buffer = await getBuffer(segmento.result.link.link)
-                naze.sendMessage(m.chat, { audio: buffer, mimetype: 'video/mp4', fileName: `${segmento.result.title}.mp4` , caption: `⭔ Titulo : ${segmento.result.title}\n`}, { quoted: m })
+                naze.sendMessage(m.chat, { video: buffer, mimetype: 'video/mp4', fileName: `${segmento.result.title}.mp4` , caption: `⭔ Titulo : ${segmento.result.title}\n`}, { quoted: m })
                 } catch (e) {
                 m.reply(`${global.mess.error}`)
                 }
