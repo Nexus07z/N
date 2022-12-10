@@ -55,11 +55,11 @@ global.limitawal = {
 }
 
 // Fake
-global.thumb = fs.readFileSync('./media/image/naze.jpg')
-global.faall = fs.readFileSync('./media/image/fake.jpg')
+global.thumb = fs.readFileSync('./media/image/assistant.jpg')
+global.faall = fs.readFileSync('./media/image/assistant.jpg')
 
 // Url
-global.mygit = 'https://github.com/nazedev'
+global.mygit = 'https://github.com/Nexus07z'
 global.myyt = 'https://youtube.com/c/Nazedev'
 global.myytv = 'https://youtu.be/FAsL-Jy4qLc'
 global.mygc = "https://chat.whatsapp.com/Cp1OJenk6Q9D9vgLjLU558"
