@@ -3774,7 +3774,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 
             case 'sticker': {
                 let respuestacomando = `${global.mess.etiquetaimgvid} *${prefix + command}*`
-                if (!/image/.test(mime)) throw respuestacomando
+                if ((!/image/.test(mime)) && (!/video/.test(mime))) throw respuestacomando
 
                 if (/image/.test(mime)) {
                     let media = await quoted.download()
@@ -3793,8 +3793,8 @@ let alfamart = `628111500959@s.whatsapp.net`
                 
             case 'stickersinfondo':{
                 let respuestacomando = `${global.mess.etiquetaimg} *${prefix + command}*`
-                if ((!/image/.test(mime)) && (!/image/.test(mime))) throw respuestacomando
-                
+                if (!/image/.test(mime)) throw respuestacomando
+
                 try {       
                 let { TelegraPh } = require('./lib/uploader')
                 let cargador = await naze.downloadAndSaveMediaMessage(qmsg)
