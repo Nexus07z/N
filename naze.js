@@ -3677,7 +3677,7 @@ let alfamart = `628111500959@s.whatsapp.net`
             let me = m.sender
             let jawab = `*${ucapanWaktu}*
 ╭──❍「 𝙄𝙉𝙁𝙊 𝙐𝙎𝙀𝙍 」❍
-├ *Nama* : ${pushname}
+├ *Nombre* : ${pushname}
 ├ *Number* : @${me.split('@')[0]}
 ├ *Premium* : ${isPremium ? '✅' : `❌`}
 ├ *Limit* : ${isPremium ? '♾Infinity' : `〽️${db.data.users[m.sender].limit}`}
