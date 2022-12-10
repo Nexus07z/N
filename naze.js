@@ -3791,6 +3791,25 @@ let alfamart = `628111500959@s.whatsapp.net`
                 }
             break
 
+            case 'sticker2': {
+                let respuestacomando = `${global.mess.etiquetaimgvidl} *${prefix + command}*`
+                if ((!/image/.test(mime)) && (!/video/.test(mime))) throw respuestacomando
+
+                if (/image/.test(mime)) {
+                    let media = await quoted.download()
+                    let encmedia = await naze.sendImageAsSticker(m.chat, media, m, {  })
+                    await fs.unlinkSync(encmedia)
+                } else if (/video/.test(mime)) {
+                    if ((quoted.msg || quoted).seconds > 11) return m.reply(`${global.mess.lims}`)
+                    let media = await quoted.download()
+                    let encmedia = await naze.sendVideoAsSticker(m.chat, media)
+                    await fs.unlinkSync(encmedia)
+                } else {
+                    throw `${global.mess.error}`
+                    }
+                }
+            break
+
             case 'stickerw': {
                 let respuestacomando = `${global.mess.etiquetaimgvidl} *${prefix + command}*`
                 if ((!/image/.test(mime)) && (!/video/.test(mime))) throw respuestacomando
@@ -3835,14 +3854,19 @@ let alfamart = `628111500959@s.whatsapp.net`
 
             case 'renombrar': {
                 let respuestacomando = `${global.mess.etiquetastick} *${prefix + command} Package|Author*`
-                if (!/sticker/.test(mime)) throw respuestacomando
+                if ((!/image/.test(mime)) && (!/video/.test(mime))) throw respuestacomando
                 let [packname, author] = text.split`|`
                 if (!packname) throw respuestacomando
                 if (!author) throw respuestacomando
 
-                if (/sticker/.test(mime)) {
+                if (/image/.test(mime)) {
                     let media = await quoted.download()
                     let encmedia = await naze.sendImageAsSticker(m.chat, media, m, { packname: packname, author: author})
+                    await fs.unlinkSync(encmedia)
+                } else if (/video/.test(mime)) {
+                    if ((quoted.msg || quoted).seconds > 11) return m.reply(`${global.mess.lims}`)
+                    let media = await quoted.download()
+                    let encmedia = await naze.sendVideoAsSticker(m.chat, media, m, { packname: packname, author: author })
                     await fs.unlinkSync(encmedia)
                 } else {
                     throw `${global.mess.error}`
