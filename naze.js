@@ -3849,12 +3849,26 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
 
-            case 'color':{
+            case 'textocolor':{
                 let respuestacomando = `${global.mess.textocomando} *${prefix + command} Texto*`
                 if (!text) throw respuestacomando
 
                 try {       
                 let contenido = `https://xteam.xyz/attp?file&text=${text}`
+                let msjsticker = await naze.sendImageAsSticker(m.chat, contenido, m, { packname: global.packname, author: global.author })
+                await fs.unlinkSync(msjsticker)
+                } catch (e) {
+                m.reply(`${global.mess.error}`)
+                }
+            }
+            break
+
+            case 'textosincolor':{
+                let respuestacomando = `${global.mess.textocomando} *${prefix + command} Texto*`
+                if (!text) throw respuestacomando
+
+                try {       
+                let contenido = `https://xteamd.xyz/attp?file&text=${text}`
                 let msjsticker = await naze.sendImageAsSticker(m.chat, contenido, m, { packname: global.packname, author: global.author })
                 await fs.unlinkSync(msjsticker)
                 } catch (e) {
