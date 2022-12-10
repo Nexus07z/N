@@ -3675,23 +3675,109 @@ let alfamart = `628111500959@s.whatsapp.net`
             case 'comandos': {
                 
                 let Menu = `
-                ╭─ *INICIO LISTA DE MENUS*
-                │
-                ├ *${prefix}menu1* (Descargas)
-                ├ *${prefix}menu2* (Stickers)
-                ├ *${prefix}menu3* (Crear Memes)
-                ├ *${prefix}menu4* (Imagenes al azar)
-                ├ *${prefix}menu5* (Editar Fotos y Videos)
-                ├ *${prefix}menu6* (Convertidores)
-                ├ *${prefix}menu7* (Audios)
-                ├ *${prefix}menu8* (Otros)
-                ├ *${prefix}menu9* (Generador Text Pro Me)
-                ├ *${prefix}menu10* (Generador Photo Oxy)
-                ├ *${prefix}menu11* (Generador Ephoto 360)
-                │
-                ╰─ *FIN LISTA DE MENUS*
-                ` 
+╭─ *INICIO LISTA DE MENUS*
+│
+├ *${prefix}menu1* (Descargas)
+├ *${prefix}menu2* (Stickers)
+├ *${prefix}menu3* (Crear Memes)
+├ *${prefix}menu4* (Imagenes al azar)
+├ *${prefix}menu5* (Editar Fotos y Videos)
+├ *${prefix}menu6* (Convertidores)
+├ *${prefix}menu7* (Audios)
+├ *${prefix}menu8* (Otros)
+├ *${prefix}menu9* (Generador Text Pro Me)
+├ *${prefix}menu10* (Generador Photo Oxy)
+├ *${prefix}menu11* (Generador Ephoto 360)
+│
+╰─ *FIN LISTA DE MENUS*
+` 
                 naze.sendMessage(m.chat, { text: Menu }, {quoted: fdoc})
+            }
+            break
+
+            case 'menu1': {
+                
+                let Menu1 = `
+╭───「 *Descargas* 」
+│
+├「 *YouTube* 」
+│
+├ *${prefix}ytplay* [nombre de la canción]
+│ Descarga un audio de youtube.
+│
+├ *${prefix}ytsearch* [nombre de la canción]
+│ Muestra una lista de links de youtube.
+│ 
+├ *${prefix}ytmp3* [link de youtube]
+│ Descarga un audio de youtube.
+│ 
+├ *${prefix}ytmp4* [link de youtube]
+│ Descarga un video de youtube.
+│
+├「 *TikTok* 」
+│
+├ *${prefix}tiktok* [link de tiktok]
+│ Descarga un video sin marca de agua.
+│
+├ *${prefix}tiktokwm* [link de tiktok]
+│ Descarga un video con marca de agua.
+│ 
+├ *${prefix}tiktomusic* [link de tiktok]
+│ Descarga la musica original del video.
+│ 
+├「 *Instagram* 」
+│
+├ *${prefix}igdl* [link de instagram]
+│ Descarga un video de instagram.
+│ 
+├「 *Facebook* 」
+│
+├ *${prefix}fbdl* [link de facebook]
+│ Descarga un video de facebook.
+│ 
+├「 *Twitter* 」
+│
+├ *${prefix}twtdl* [link de twitter]
+│ Descarga un video de twitter.
+│
+╰───
+` 
+                naze.sendMessage(m.chat, { text: Menu1 }, {quoted: fdoc})
+            }
+            break
+
+            case 'menu2': {
+                
+                let Menu2 = `
+╭───「 *Stickers* 」
+│
+├ *${prefix}sticker*
+│ Crea un sticker.
+│
+├ *${prefix}stickerwm*
+│ Crea un sticker con autor Nexus.
+│
+├ *${prefix}stickerp* [Package|Author]
+│ Crea un sticker con nombre personalizado.
+│
+├ *${prefix}renombrar* [Package|Author]
+│ Cambia el nombre de un sticker.
+│
+├ *${prefix}stickersinfondo*
+│ Crea un sticker sin fondo.
+│
+├ *${prefix}stickernobg*
+│ Crea un sticker sin fondo.
+│
+├ *${prefix}telesticker* [link de telegram]
+│ Envia stickers de telegram.
+│
+├ *${prefix}colores* [texto]
+│ Crea un sticker con el texto de colores.
+│
+╰───
+` 
+                naze.sendMessage(m.chat, { text: Menu2 }, {quoted: fdoc})
             }
             break
  
