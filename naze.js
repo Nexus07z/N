@@ -39,7 +39,7 @@ const moment = require('moment-timezone')
 const { JSDOM } = require('jsdom')
 const speed = require('performance-now')
 const { performance } = require('perf_hooks')
-const { Primbon } = require('scrape-primbon')
+const { Primbon } = require('scrape-primbon')m
 const primbon = new Primbon()
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
 
@@ -3708,13 +3708,10 @@ let alfamart = `628111500959@s.whatsapp.net`
                 anu = await fetchJson(`https://api.lolhuman.xyz/api/ytaudio?apikey=4fda13ee5ed767eef2174d23&url=${text}`)
                 buffer = await getBuffer(anu.result.link.link)
                 
-                naze.sendMessage(m.chat, { audio: buffer, mimetype: 'audio/mpeg', fileName: `${anu.result.title}.mp3` }, { quoted: m })
+                naze.sendMessage(m.chat, { audio: buffer, mimetype: 'audio/mp4', fileName: `${anu.result.title}.mp3` }, { quoted: m })
             }
             break
 
-	    
-
-            
 
             case 'ytmp4': case 'ytvideo': {
                 let { ytv } = require('./lib/y2mate')
