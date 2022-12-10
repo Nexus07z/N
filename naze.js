@@ -3745,11 +3745,11 @@ let alfamart = `628111500959@s.whatsapp.net`
 ├ *${prefix}sticker*
 │ Crea un sticker.
 │
-├ *${prefix}stickerwm*
-│ Crea un sticker con autor Nexus.
+├ *${prefix}stickerw*
+│ Crea un sticker con autor WhatsApp.
 │
 ├ *${prefix}stickerp* [Package|Author]
-│ Crea un sticker con nombre personalizado.
+│ Sticker con nombre personalizado.
 │
 ├ *${prefix}renombrar* [Package|Author]
 │ Cambia el nombre de un sticker.
@@ -3817,7 +3817,7 @@ let alfamart = `628111500959@s.whatsapp.net`
                 let [packname, author] = text.split`|`
                 if (!packname) throw respuestacomando
                 if (!author) throw respuestacomando
-                
+
                 if (/image/.test(mime)) {
                     let media = await quoted.download()
                     let encmedia = await naze.sendImageAsSticker(m.chat, media, m, { packname: packname, author: author})
@@ -3826,6 +3826,23 @@ let alfamart = `628111500959@s.whatsapp.net`
                     if ((quoted.msg || quoted).seconds > 11) return m.reply(`${global.mess.lims}`)
                     let media = await quoted.download()
                     let encmedia = await naze.sendVideoAsSticker(m.chat, media, m, { packname: packname, author: author })
+                    await fs.unlinkSync(encmedia)
+                } else {
+                    throw `${global.mess.error}`
+                    }
+                }
+            break
+
+            case 'renombrar': {
+                let respuestacomando = `${global.mess.etiquetastick} *${prefix + command} Package|Author*`
+                if (!/sticker/.test(mime)) throw respuestacomando
+                let [packname, author] = text.split`|`
+                if (!packname) throw respuestacomando
+                if (!author) throw respuestacomando
+
+                if (/sticker/.test(mime)) {
+                    let media = await quoted.download()
+                    let encmedia = await naze.sendImageAsSticker(m.chat, media, m, { packname: packname, author: author})
                     await fs.unlinkSync(encmedia)
                 } else {
                     throw `${global.mess.error}`
