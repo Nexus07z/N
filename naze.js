@@ -3774,8 +3774,8 @@ let alfamart = `628111500959@s.whatsapp.net`
 
             case 'sticker': {
                 let respuestacomando = `${global.mess.etiquetaimgvid} *${prefix + command}*`
-                if (!quoted) throw respuestacomando
-                m.reply(mess.wait)
+                if (!/image/.test(mime)) throw respuestacomando
+
                 if (/image/.test(mime)) {
                     let media = await quoted.download()
                     let encmedia = await naze.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
@@ -3793,7 +3793,7 @@ let alfamart = `628111500959@s.whatsapp.net`
                 
             case 'stickersinfondo':{
                 let respuestacomando = `${global.mess.etiquetaimg} *${prefix + command}*`
-                if (!/image/.test(mime)) throw respuestacomando
+                if ((!/image/.test(mime)) && (!/image/.test(mime))) throw respuestacomando
                 
                 try {       
                 let { TelegraPh } = require('./lib/uploader')
