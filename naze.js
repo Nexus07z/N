@@ -3809,7 +3809,8 @@ let alfamart = `628111500959@s.whatsapp.net`
 
             case 'stickersinfondo':{
                 let respond = `Por favor etiqueta una imagen con el comando: *${prefix + command}*`
-                if (!/image/.test(mime)) throw respond        
+                if (!/image/.test(mime)) throw respond
+                try {       
                 let { TelegraPh } = require('./lib/uploader')
                 let mee = await naze.downloadAndSaveMediaMessage(qmsg)
                 let mem = await TelegraPh(mee)
