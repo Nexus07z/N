@@ -2042,42 +2042,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             break**/
             
 //PEMBATAS CONVERT=======================================
-            case 'sticker': case 's': case 'stickergif': case 'sgif': {
-            if (!quoted) throw `*Balas Video/Image Dengan Caption* ${prefix + command}`
-            m.reply(mess.wait)
-                    if (/image/.test(mime)) {
-                let media = await quoted.download()
-                let encmedia = await naze.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
-                await fs.unlinkSync(encmedia)
-            } else if (/video/.test(mime)) {
-                if ((quoted.msg || quoted).seconds > 11) return m.reply('*Maksimal 10 detik!*')
-                let media = await quoted.download()
-                let encmedia = await naze.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
-                await fs.unlinkSync(encmedia)
-            } else {
-                throw `*Kirim Gambar/Video Dengan Caption* ${prefix + command}\nDurasi *Video 1-9 Detik*`
-                }
-            }
-            break
-            case 'stikerwm': case 'stickerwm': case 'swm': case 'stickergifwm': case 'sgifwm': case 'take': {
-                let [teks1, teks2] = text.split`|`
-                if (!teks1) throw `Kirim/reply image/video dengan caption ${prefix + command} teks1|teks2`
-                if (!teks2) throw `Kirim/reply image/video dengan caption ${prefix + command} teks1|teks2`
-            	m.reply(mess.wait)
-                if (/image/.test(mime)) {
-                    let media = await naze.downloadMediaMessage(qmsg)
-                    let encmedia = await naze.sendImageAsSticker(m.chat, media, m, { packname: teks1, author: teks2 })
-                    await fs.unlinkSync(encmedia)
-                } else if (/video/.test(mime)) {
-                    if ((quoted.msg || quoted).seconds > 11) return m.reply('Maksimal 10 detik!')
-                    let media = await naze.downloadMediaMessage(qmsg)
-                    let encmedia = await naze.sendVideoAsSticker(m.chat, media, m, { packname: teks1, author: teks2 })
-                    await fs.unlinkSync(encmedia)
-                } else {
-                    throw `Kirim Gambar/Video Dengan Caption ${prefix + command}\nDurasi Video 1-9 Detik`
-                }
-            }
-            break
+            
 
 
 
@@ -3807,9 +3772,28 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
 
+            case 'sticker': {
+                let respuestacomando = `${global.mess.etiquetaimgvid} *${prefix + command}*`
+                if (!quoted) throw respuestacomando
+                m.reply(mess.wait)
+                if (/image/.test(mime)) {
+                    let media = await quoted.download()
+                    let encmedia = await naze.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+                    await fs.unlinkSync(encmedia)
+                } else if (/video/.test(mime)) {
+                    if ((quoted.msg || quoted).seconds > 11) return m.reply(`${global.mess.lims}`)
+                    let media = await quoted.download()
+                    let encmedia = await naze.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+                    await fs.unlinkSync(encmedia)
+                } else {
+                    throw `${global.mess.error}`
+                    }
+                }
+            break
+                
             case 'stickersinfondo':{
-                let respond = `Por favor etiqueta una imagen con el comando: *${prefix + command}*`
-                if (!/image/.test(mime)) throw respond
+                let respuestacomando = `${global.mess.etiquetaimg} *${prefix + command}*`
+                if (!/image/.test(mime)) throw respuestacomando
                 
                 try {       
                 let { TelegraPh } = require('./lib/uploader')
