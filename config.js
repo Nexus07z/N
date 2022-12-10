@@ -43,7 +43,7 @@ global.mess = {
     bot: 'Fitur Khusus Pengguna Nomor Bot',
     wait: 'Loading...',
     etiquetaimg: 'Por favor etiqueta una imagen con el comando: ',
-    etiquetaimgvid: 'Por favor etiqueta una imagen o video (de 0-10 seg) con el comando: ',
+    etiquetaimgvidl: 'Por favor etiqueta una imagen o un video con una duración máxima de 10 segundos con el comando: ',
     lims: '*La duración máxima permitida es de 10 segundos.*',
     error: '*Ocurrió un problema, puedes intentarlo nuevamente más tarde.*',
     errapi: 'Error Mungkin Apikey Tidak Valid!',

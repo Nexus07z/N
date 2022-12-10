@@ -3773,12 +3773,31 @@ let alfamart = `628111500959@s.whatsapp.net`
             break
 
             case 'sticker': {
-                let respuestacomando = `${global.mess.etiquetaimgvid} *${prefix + command}*`
+                let respuestacomando = `${global.mess.etiquetaimgvidl} *${prefix + command}*`
                 if ((!/image/.test(mime)) && (!/video/.test(mime))) throw respuestacomando
 
                 if (/image/.test(mime)) {
                     let media = await quoted.download()
                     let encmedia = await naze.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+                    await fs.unlinkSync(encmedia)
+                } else if (/video/.test(mime)) {
+                    if ((quoted.msg || quoted).seconds > 11) return m.reply(`${global.mess.lims}`)
+                    let media = await quoted.download()
+                    let encmedia = await naze.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+                    await fs.unlinkSync(encmedia)
+                } else {
+                    throw `${global.mess.error}`
+                    }
+                }
+            break
+
+            case 'sticker2': {
+                let respuestacomando = `${global.mess.etiquetaimgvidl} *${prefix + command}*`
+                if ((!/image/.test(mime)) && (!/video/.test(mime))) throw respuestacomando
+
+                if (/image/.test(mime)) {
+                    let media = await quoted.download()
+                    let encmedia = await naze.sendImageAsSticker(m.chat, media, m, )
                     await fs.unlinkSync(encmedia)
                 } else if (/video/.test(mime)) {
                     if ((quoted.msg || quoted).seconds > 11) return m.reply(`${global.mess.lims}`)
