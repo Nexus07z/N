@@ -3854,8 +3854,7 @@ let alfamart = `628111500959@s.whatsapp.net`
                 if (!text) throw respuestacomando
 
                 try {       
-                let contenido = `https://xteam.xyz/attp?file&text=${text}`
-                let msjsticker = await naze.sendImageAsSticker(m.chat, contenido, m, { packname: global.packname, author: global.author })
+                let msjsticker = await naze.sendMedia(m.chat, `https://xteamt.xyz/attp?file&text=${text}`, 'naze', 'dev', m, {asSticker: true})
                 await fs.unlinkSync(msjsticker)
                 } catch (e) {
                 m.reply(`${global.mess.error}`)
