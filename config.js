@@ -28,7 +28,6 @@ global.sessionName = 'nexusdev'  //jangan diganti bro nanti error
 global.jumlha = '999'
 global.jumhal = '100000000000000'
 global.jumlah = '1000000000'
-global.prefa = ['.']
 global.prefix = ['.']
 global.sp = ''
 

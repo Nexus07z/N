@@ -3675,15 +3675,25 @@ let alfamart = `628111500959@s.whatsapp.net`
             case 'comandos': {
                 
                 let Menu = `
-╭─ *INICIO LISTA DE MENUS*
-│
-
-│
-╰─ *FIN LISTA DE MENUS*
-` 
-naze.sendMessage(m.chat, { text: Menu }, {quoted: fdoc})
-  }
- break
+                ╭─ *INICIO LISTA DE MENUS*
+                │
+                ├ *${prefix}menu1* (Descargas)
+                ├ *${prefix}menu2* (Stickers)
+                ├ *${prefix}menu3* (Crear Memes)
+                ├ *${prefix}menu4* (Imagenes al azar)
+                ├ *${prefix}menu5* (Editar Fotos y Videos)
+                ├ *${prefix}menu6* (Convertidores)
+                ├ *${prefix}menu7* (Audios)
+                ├ *${prefix}menu8* (Otros)
+                ├ *${prefix}menu9* (Generador Text Pro Me)
+                ├ *${prefix}menu10* (Generador Photo Oxy)
+                ├ *${prefix}menu11* (Generador Ephoto 360)
+                │
+                ╰─ *FIN LISTA DE MENUS*
+                ` 
+                naze.sendMessage(m.chat, { text: Menu }, {quoted: fdoc})
+            }
+            break
  
                     
             case 'menu': {
