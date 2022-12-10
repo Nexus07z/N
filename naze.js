@@ -3700,16 +3700,22 @@ let alfamart = `628111500959@s.whatsapp.net`
                 naze.sendMessage(m.chat, buttonMessage, { quoted: m })
             }
             break
-	    case 'ytmp3': case 'ytaudio': {
-                let { yta } = require('./lib/y2mate')
-                if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
-                let quality = args[1] ? args[1] : '128kbps'
-                let media = await yta(text, quality)
-                if (media.filesize >= 100000) return m.reply('File Melebihi Batas '+util.format(media))
-                naze.sendImage(m.chat, media.thumb, `⭔ Title : ${media.title}\n⭔ File Size : ${media.filesizeF}\n⭔ Url : ${isUrl(text)}\n⭔ Ext : MP3\n⭔ Resolusi : ${args[1] || '128kbps'}`, m)
-                naze.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
+
+            case 'ytmp3': {
+            	let respuestacomando = `${global.mess.textocomando} *${prefix + command} Texto*`
+                if (!text) throw respuestacomando
+
+                anu = await fetchJson(`https://api.lolhuman.xyz/api/ytaudio?apikey=4fda13ee5ed767eef2174d23&url=${text}`)
+                buffer = await getBuffer(anu.result.link.link)
+                
+                naze.sendMessage(m.chat, { audio: buffer, mimetype: 'audio/mpeg', fileName: `${anu.result.title}.mp3` }, { quoted: m })
             }
             break
+
+	    
+
+            
+
             case 'ytmp4': case 'ytvideo': {
                 let { ytv } = require('./lib/y2mate')
                 if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`
