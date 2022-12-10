@@ -3270,8 +3270,8 @@ break
 		let anu = await umma(isUrl(text)[0])
 		if (anu.type == 'video') {
 		    let buttons = [
-                        {buttonId: `ytmp3 ${anu.media[0]} 128kbps`, buttonText: {displayText: '♫ Audio'}, type: 1},
-                        {buttonId: `ytmp4 ${anu.media[0]} 360p`, buttonText: {displayText: '► Video'}, type: 1}
+                        {buttonId: `ytmp3 ${anu.media[0]}`, buttonText: {displayText: '♫ Audio'}, type: 1},
+                        {buttonId: `ytmp4 ${anu.media[0]}`, buttonText: {displayText: '► Video'}, type: 1}
                     ]
 		    let buttonMessage = {
 		        image: { url: anu.author.profilePic },
@@ -3702,16 +3702,18 @@ let alfamart = `628111500959@s.whatsapp.net`
             break
 
             case 'ytmp3': {
-            	let respuestacomando = `${global.mess.textocomando} *${prefix + command} Texto*`
+            	let respuestacomando = `${global.mess.linkcomando} *${prefix + command}*\n\n*Por ejemplo:*\n\n*${prefix + command} https://youtu.be/QQPgk_MkK4k*`
                 if (!text) throw respuestacomando
-
-                anu = await fetchJson(`https://api.lolhuman.xyz/api/ytaudio?apikey=4fda13ee5ed767eef2174d23&url=${text}`)
-                buffer = await getBuffer(anu.result.link.link)
                 
-                naze.sendMessage(m.chat, { audio: buffer, mimetype: 'audio/mp4', fileName: `${anu.result.title}.mp3` }, { quoted: m })
+                try {
+                segmento = await fetchJson(`https://api.lolhuman.xyz/api/ytaudio?apikey=${global.apilol}&url=${text}`)
+                buffer = await getBuffer(segmento.result.link.link)
+                naze.sendMessage(m.chat, { audio: buffer, mimetype: 'audio/mpeg', fileName: `${segmento.result.title}.mp3` }, { quoted: m })
+                } catch (e) {
+                m.reply(`${global.mess.error}`)
+                }
             }
             break
-
 
             case 'ytmp4': case 'ytvideo': {
                 let { ytv } = require('./lib/y2mate')

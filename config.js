@@ -45,6 +45,7 @@ global.mess = {
     etiquetaimg: 'Debes etiquetar una imagen con el comando: ',
     etiquetastick: 'Debes etiquetar un sticker con el comando: ',
     textocomando: 'Falta agregar texto al lado del siguiente comando: ',
+    linkcomando: 'Falta agregar la url al lado del siguiente comando: ',
     etiquetaimgvidl: 'Debes etiquetar una imagen o un video con una duración máxima de 10 segundos con el comando: ',
     lims: '*La duración máxima permitida es de 10 segundos.*',
     error: '*Ocurrió un problema, puedes intentarlo nuevamente más tarde.*',
