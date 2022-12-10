@@ -3812,11 +3812,11 @@ let alfamart = `628111500959@s.whatsapp.net`
                 if (!/image/.test(mime)) throw respond
                 try {       
                 let { TelegraPh } = require('./lib/uploader')
-                let mee = await naze.downloadAndSaveMediaMessage(qmsg)
-                let mem = await TelegraPh(mee)
-                let smeme = `https://api.lolhuman.xyz/api/rremovebg?apikey=4fda13ee5ed767eef2174d23&img=${mem}`
-                let awikwok = await naze.sendImageAsSticker(m.chat, smeme, m, { packname: global.packname, author: global.author })
-                await fs.unlinkSync(awikwok)
+                let cargador = await naze.downloadAndSaveMediaMessage(qmsg)
+                let link = await TelegraPh(cargador)
+                let contenido = `https://api.lolhuman.xyz/api/removebg?apikey=4fda13ee5ed767eef2174d23&img=${link}`
+                let msjsticker = await naze.sendImageAsSticker(m.chat, contenido, m, { packname: global.packname, author: global.author })
+                await fs.unlinkSync(msjsticker)
                 } catch (e) {
                 m.reply(`${global.mess.error}`)
                 }
