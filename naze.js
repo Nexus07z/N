@@ -3854,7 +3854,7 @@ let alfamart = `628111500959@s.whatsapp.net`
                 if (!text) throw respuestacomando
 
                 try {       
-                    await naze.sendMedia(m.chat, `https://xteam.xyz/attp?file&text=${text}`, 'naze', 'dev', m, {asSticker: true})
+                    await naze.sendMedia(m.chat, `https://xteam.xyz/attp?file&text=${text}`, '', '', m, {asSticker: true})
                 } catch (e) {
                 m.reply(`${global.mess.error}`)
                 }
@@ -3866,25 +3866,13 @@ let alfamart = `628111500959@s.whatsapp.net`
                 if (!text) throw respuestacomando
 
                 try {       
-                let contenido = `https://xteamd.xyz/attp?file&text=${text}`
-                let msjsticker = await naze.sendImageAsSticker(m.chat, contenido, m, { packname: global.packname, author: global.author })
-                await fs.unlinkSync(msjsticker)
+                    await naze.sendMedia(m.chat, `https://xteam.xyz/ttp?file&text=${text}`, '', '', m, {asSticker: true})
                 } catch (e) {
                 m.reply(`${global.mess.error}`)
                 }
             }
             break
-
-            case 'attp': case 'ttp': {
-                let respuestacomando = `${global.mess.textocomando} *${prefix + command} Texto*`
-                if (!text) throw respuestacomando
-                await naze.sendMedia(m.chat, `https://xteamt.xyz/${command}?file&text=${text}`, 'naze', 'dev', m, {asSticker: true})
-     
-            }
-            break
-        
-                
-                
+            
             case 'menu': {
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
