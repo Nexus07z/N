@@ -3704,18 +3704,10 @@ mediaType: 2,
 mediaUrl: myytv,
 sourceUrl: myyt}}
 }
-naze.sendMessage(m.chat, Menu, {quoted:
-    {
-        key: {
-            fromMe: false,
-            participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
-        },
-        message: {
-            "documentMessage": { "title": "Nexusᴮᴼᵀ", 'jpegThumbnail': fs.readFileSync('./src/assistant.jpg') }
-        }
-    }})
-}
-break
+naze.sendMessage(m.chat, buttonMessage, {quoted: fdoc})
+  }
+ break
+
                     
             case 'menu': {
             let ownernya = ownernomer + '@s.whatsapp.net'
