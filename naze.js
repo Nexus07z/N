@@ -3673,8 +3673,7 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
             case 'comandos': {
-                let ownernya = ownernomer + '@s.whatsapp.net'
-                let me = m.sender
+                
                 let Menu = `
 ╭─ *INICIO LISTA DE MENUS*
 │
