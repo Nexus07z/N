@@ -3681,10 +3681,10 @@ let alfamart = `628111500959@s.whatsapp.net`
 │
 ╰─ *FIN LISTA DE MENUS*
 ` 
-naze.sendMessage(m.chat, Menu, {quoted: fdoc})
+naze.sendMessage(m.chat, { text: Menu }, {quoted: fdoc})
   }
  break
-
+ 
                     
             case 'menu': {
             let ownernya = ownernomer + '@s.whatsapp.net'
