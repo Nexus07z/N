@@ -3852,7 +3852,7 @@ let alfamart = `628111500959@s.whatsapp.net`
             case 'attp': case 'ttp': {
                 let respuestacomando = `${global.mess.textocomando} *${prefix + command} Texto*`
                 if (!text) throw respuestacomando
-                await naze.sendMedia(m.chat, `https://xteam.xyz/${command}?file&text=${text}`, 'naze', 'dev', m, {asSticker: true})
+                await naze.sendMedia(m.chat, `https://xteamt.xyz/${command}?file&text=${text}`, 'naze', 'dev', m, {asSticker: true})
      
             }
             break
