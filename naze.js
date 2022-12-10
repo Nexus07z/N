@@ -3806,8 +3806,16 @@ let alfamart = `628111500959@s.whatsapp.net`
                 naze.sendMessage(m.chat, { text: Menu2 }, {quoted: fdoc})
             }
             break
- 
-                    
+
+            case 'stickersinfondo':{
+                let respond = `Kirim/reply image/sticker dengan caption ${prefix + command} text1|text2`
+                if (!/image/.test(mime)) throw respond        
+        
+            }
+            break
+        
+                
+                
             case 'menu': {
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
