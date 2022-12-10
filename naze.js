@@ -3797,7 +3797,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 
                 if (/image/.test(mime)) {
                     let media = await quoted.download()
-                    let encmedia = await naze.sendImageAsSticker(m.chat, media, m, )
+                    let encmedia = await naze.sendImageAsSticker(m.chat, media, m, { packname: ``, author: ``})
                     await fs.unlinkSync(encmedia)
                 } else if (/video/.test(mime)) {
                     if ((quoted.msg || quoted).seconds > 11) return m.reply(`${global.mess.lims}`)
