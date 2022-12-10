@@ -2097,7 +2097,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             case 'colored': {
                 oh = `Example : ${prefix + command} 3\n\nIQRA Yang tersedia : 1,2,3,4,5,6`
                 if (!text) throw oh
-                yy = await getBuffer(`https://api.xteam.xyz/attp?file&text=${text}`)
+                yy = await getBuffer(`https://media.elmostrador.cl/2022/08/Gato-2-468x267.jpg`)
                 naze.sendImageAsSticker(m.chat, yy, m, { packname: global.packname, author: global.author })
                 }
                 break
