@@ -3672,6 +3672,51 @@ let alfamart = `628111500959@s.whatsapp.net`
                     await naze.sendButtonText(m.chat, buttons, jawab, naze.user.name, m, {mentions: ments})
             }
             break
+            case 'comandos': {
+                let ownernya = ownernomer + '@s.whatsapp.net'
+                let me = m.sender
+                let Menu = `
+╭─ *INICIO LISTA DE MENUS*
+│
+
+│
+╰─ *FIN LISTA DE MENUS*
+` 
+let ments = [ownernya, me, ini_mark]
+let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+let buttonMessage = {
+document: fs.readFileSync('./media/doc/fake.pptx'),
+fileName : akulaku + (` | Halo ${pushname}`),
+mimetype: `${filsk}`,
+fileLength: jumhal,
+pageCount: jumlha,
+caption: jawab,
+footer: nyoutube,
+buttons: buttons,
+mentions: ments,
+headerType: 4,
+contextInfo:{externalAdReply:{
+title: 'Naze Dev',
+body: 'Subscribe My YouTube', 
+showAdAttribution: true,
+thumbnail: thumb,
+mediaType: 2,
+mediaUrl: myytv,
+sourceUrl: myyt}}
+}
+naze.sendMessage(m.chat, Menu, {quoted:
+    {
+        key: {
+            fromMe: false,
+            participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
+        },
+        message: {
+            "documentMessage": { "title": "Nexusᴮᴼᵀ", 'jpegThumbnail': fs.readFileSync('./src/assistant.jpg') }
+        }
+    }})
+}
+break
+                    
             case 'menu': {
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender

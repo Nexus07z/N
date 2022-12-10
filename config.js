@@ -19,12 +19,12 @@ global.APIKeys = {
 }
 
 // Other
-global.owner = ['6285875158363']
-global.ownernomer = "6285875158363"
-global.premium = ['6285875158363']
-global.packname = 'Sticker By'
-global.author = 'Naze Dev'
-global.sessionName = 'nazedev'  //jangan diganti bro nanti error
+global.owner = ['51963324153']
+global.ownernomer = "51963324153"
+global.premium = ['51963324153']
+global.packname = 'Sticker'
+global.author = 'Nexus'
+global.sessionName = 'nexusdev'  //jangan diganti bro nanti error
 global.jumlha = '999'
 global.jumhal = '100000000000000'
 global.jumlah = '1000000000'
@@ -65,7 +65,7 @@ global.myytv = 'https://youtu.be/FAsL-Jy4qLc'
 global.mygc = "https://chat.whatsapp.com/Cp1OJenk6Q9D9vgLjLU558"
 
 // Engak Ngaruh, Belum Kepasang
-global.botname = 'NAZE BOT'
+global.botname = 'Nexusᴮᴼᵀ'
 global.akulaku = 'Bot By Naze'
 global.ytname = 'YT NAZE' //Kalo Ngk Punya Yt Ngak Usah Di Ganti
 
