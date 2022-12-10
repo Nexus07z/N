@@ -52,7 +52,7 @@ const nyoutube = ('© Naze\nYoutube/Sc :\nhttps://youtube.com/c/Nazedev')  //uba
 const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 global.prem = require("./lib/premium")
-gambar = fs.readFileSync('./media/image/assistant.jpg')
+gambar = fs.readFileSync('./media/image/naze.jpg')
 
 //TIME
 const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')  
@@ -92,9 +92,9 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
     try {
         var body = (m.mtype === 'conversation') ? m.message.conversation : (m.mtype == 'imageMessage') ? m.message.imageMessage.caption : (m.mtype == 'videoMessage') ? m.message.videoMessage.caption : (m.mtype == 'extendedTextMessage') ? m.message.extendedTextMessage.text : (m.mtype == 'buttonsResponseMessage') ? m.message.buttonsResponseMessage.selectedButtonId : (m.mtype == 'listResponseMessage') ? m.message.listResponseMessage.singleSelectReply.selectedRowId : (m.mtype == 'templateButtonReplyMessage') ? m.message.templateButtonReplyMessage.selectedId : (m.mtype === 'messageContextInfo') ? (m.message.buttonsResponseMessage?.selectedButtonId || m.message.listResponseMessage?.singleSelectReply.selectedRowId || m.text) : ''
         var budy = (typeof m.text == 'string' ? m.text : '')
-        global.prefix
+        var prefix = prefa ? /^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi.test(body) ? body.match(/^[°•π÷×¶∆£¢€¥®™+✓_=|~!?@#$%^&.©^]/gi)[0] : "" : prefa ?? global.prefix
         const isCmd = body.startsWith(prefix)
-        const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
+        const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
         const args = body.trim().split(/ +/).slice(1)
         const arg = body.substring(body.indexOf(" ") + 1);
         const pushname = m.pushName || "No Name"
@@ -245,18 +245,18 @@ const sendStickerFromUrl = async(to, url) => {
              }
              
              //Fake
-	    const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "status@broadcast"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: await reSize(thumb, 100, 100), surface: 200, message: `${botname}`, orderTitle: 'Naze', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
-		const fdoc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {documentMessage: {title: `${botname}`,jpegThumbnail: await reSize(thumb, 100, 100)}}}
+	    const ftroli ={key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "status@broadcast"}, "message": {orderMessage: {itemCount: 2022,status: 200, thumbnail: await reSize(thumb, 100, 100), surface: 200, message: `${ytname}`, orderTitle: 'Naze', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
+		const fdoc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {documentMessage: {title: `${ytname}`,jpegThumbnail: await reSize(thumb, 100, 100)}}}
 		const fvn = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "audioMessage": {"mimetype":"audio/ogg; codecs=opus","seconds":359996400,"ptt": "true"}} } 
-		const ftextt = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})}, message: { "extendedTextMessage": {"text":`${botname}`, "title": `${botname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
-        const ftoko = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? {remoteJid: "status@broadcast" } : {})}, message: { "productMessage": { "product": { "productImage":{ "mimetype": "image/jpeg", "jpegThumbnail": await reSize(thumb, 100, 100)},"title": `${botname}`, "description": `${botname}`, "currencyCode": "IDR", "priceAmount1000": "1000000000000000000", "retailerId": `${botname}`, "productImageCount": 1}, "businessOwnerJid": `0@s.whatsapp.net`}}} 
-		const fgif = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: {"videoMessage": { "title":`${botname}`, "h": `Hmm`,'seconds': '359996400', 'gifPlayback': 'true', 'caption': `${botname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
-		const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "6288213840883-1616169743@g.us","inviteCode": "m","groupName": `${botname}`, "caption": `${botname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
-		const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },message: { "videoMessage": { "title":`${botname}`, "h": `Hmm`,'seconds': '359996400', 'caption': `${botname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
-		const floc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${botname}`,jpegThumbnail: await reSize(thumb, 100, 100)}}}
-		const floc2 = {key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) }, message: { "liveLocationMessage": { "title": `${botname}`,"h": `Hmm`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
-		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': `${botname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;botname,;;;\nFN:botname\nitem1.TEL;waid=51963324153:51963324153\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': await reSize(thumb, 100, 100), thumbnail: await reSize(thumb, 100, 100),sendEphemeral: true}}}
-	    const fakestatus = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "imageMessage": {"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc","mimetype": "image/jpeg","caption": `${botname}`,"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080,"width": 1079,"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=","fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69","mediaKeyTimestamp": "1610993486","jpegThumbnail": await reSize(thumb, 100, 100),"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="}}}
+		const ftextt = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})}, message: { "extendedTextMessage": {"text":`${ytname}`, "title": `${botname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
+        const ftoko = {key: {fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? {remoteJid: "status@broadcast" } : {})}, message: { "productMessage": { "product": { "productImage":{ "mimetype": "image/jpeg", "jpegThumbnail": await reSize(thumb, 100, 100)},"title": `${ytname}`, "description": `${botname}`, "currencyCode": "IDR", "priceAmount1000": "1000000000000000000", "retailerId": `${ytname}`, "productImageCount": 1}, "businessOwnerJid": `0@s.whatsapp.net`}}} 
+		const fgif = {key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: {"videoMessage": { "title":`${ytname}`, "h": `Hmm`,'seconds': '359996400', 'gifPlayback': 'true', 'caption': `${ytname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
+		const fgclink = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "6288213840883-1616169743@g.us","inviteCode": "m","groupName": `${ytname}`, "caption": `${ytname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
+		const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },message: { "videoMessage": { "title":`${ytname}`, "h": `Hmm`,'seconds': '359996400', 'caption': `${ytname}`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
+		const floc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: `${ytname}`,jpegThumbnail: await reSize(thumb, 100, 100)}}}
+		const floc2 = {key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) }, message: { "liveLocationMessage": { "title": `${ytname}`,"h": `Hmm`, 'jpegThumbnail': await reSize(thumb, 100, 100)}}}
+		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': `${ytname}`, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;ytname,;;;\nFN:ytname\nitem1.TEL;waid=6285875158363:6285875158363\nitem1.X-ABLabel:Ponsel\nEND:VCARD`, 'jpegThumbnail': await reSize(thumb, 100, 100), thumbnail: await reSize(thumb, 100, 100),sendEphemeral: true}}}
+	    const fakestatus = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "imageMessage": {"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc","mimetype": "image/jpeg","caption": `${ytname}`,"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080,"width": 1079,"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=","fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69","mediaKeyTimestamp": "1610993486","jpegThumbnail": await reSize(thumb, 100, 100),"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="}}}
 		
 
 	// reset limit every 12 hours
@@ -2042,33 +2042,42 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             break**/
             
 //PEMBATAS CONVERT=======================================
-            
-
-
-
-            case 'colores': {
-                if (args.length < 1) throw `*Agrega el texto que deseas convertir en sticker de colores.*\n\n*Por ejemplo:*\n\n*${prefix + command} Nexus*`
-                let teks = encodeURIComponent(args.join(' '))
-                try {
-                let cargador = `https://api.xteam.xyz/attp?file&text=${teks}`
-                
-                let enlace = await naze.sendImageAsSticker(m.chat, cargador, m, { packname: global.packname, author: global.author })
-                await fs.unlinkSync(enlace)
-                } catch (e) {
-                m.reply(`Error\nHarus Pakai Gambar!`)
+            case 'sticker': case 's': case 'stickergif': case 'sgif': {
+            if (!quoted) throw `*Balas Video/Image Dengan Caption* ${prefix + command}`
+            m.reply(mess.wait)
+                    if (/image/.test(mime)) {
+                let media = await quoted.download()
+                let encmedia = await naze.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+                await fs.unlinkSync(encmedia)
+            } else if (/video/.test(mime)) {
+                if ((quoted.msg || quoted).seconds > 11) return m.reply('*Maksimal 10 detik!*')
+                let media = await quoted.download()
+                let encmedia = await naze.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+                await fs.unlinkSync(encmedia)
+            } else {
+                throw `*Kirim Gambar/Video Dengan Caption* ${prefix + command}\nDurasi *Video 1-9 Detik*`
                 }
+            }
+            break
+            case 'stikerwm': case 'stickerwm': case 'swm': case 'stickergifwm': case 'sgifwm': case 'take': {
+                let [teks1, teks2] = text.split`|`
+                if (!teks1) throw `Kirim/reply image/video dengan caption ${prefix + command} teks1|teks2`
+                if (!teks2) throw `Kirim/reply image/video dengan caption ${prefix + command} teks1|teks2`
+            	m.reply(mess.wait)
+                if (/image/.test(mime)) {
+                    let media = await naze.downloadMediaMessage(qmsg)
+                    let encmedia = await naze.sendImageAsSticker(m.chat, media, m, { packname: teks1, author: teks2 })
+                    await fs.unlinkSync(encmedia)
+                } else if (/video/.test(mime)) {
+                    if ((quoted.msg || quoted).seconds > 11) return m.reply('Maksimal 10 detik!')
+                    let media = await naze.downloadMediaMessage(qmsg)
+                    let encmedia = await naze.sendVideoAsSticker(m.chat, media, m, { packname: teks1, author: teks2 })
+                    await fs.unlinkSync(encmedia)
+                } else {
+                    throw `Kirim Gambar/Video Dengan Caption ${prefix + command}\nDurasi Video 1-9 Detik`
                 }
-            break 
-            case 'colored': {
-                oh = `Example : ${prefix + command} 3\n\nIQRA Yang tersedia : 1,2,3,4,5,6`
-                if (!text) throw oh
-                yy = await getBuffer(`https://media.elmostrador.cl/2022/08/Gato-2-468x267.jpg`)
-                naze.sendImageAsSticker(m.chat, yy, m, { packname: global.packname, author: global.author })
-                }
-                break
-            
-            
-            
+            }
+            break
             /**case 'nulis': case 'nulisteks': {
                 let jawab = `Pilih Nulis Bro\n*1.nuliskanan (tekslu)*\n*2.nuliskiri (tekslu)*\n*3.foliokanan (tekslu)*\n*4.foliokiri (tekslu)*\n\n_Silahkan Dipilih_`
                 let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: 'MAGER AMAT🗿' }, type: 1 }]
@@ -3663,178 +3672,12 @@ let alfamart = `628111500959@s.whatsapp.net`
                     await naze.sendButtonText(m.chat, buttons, jawab, naze.user.name, m, {mentions: ments})
             }
             break
-            case 'comandos': {
-                
-                let Menu = `
-╭─ *INICIO LISTA DE MENUS*
-│
-├ *${prefix}menu1* (Descargas)
-├ *${prefix}menu2* (Stickers)
-├ *${prefix}menu3* (Crear Memes)
-├ *${prefix}menu4* (Imagenes al azar)
-├ *${prefix}menu5* (Editar Fotos y Videos)
-├ *${prefix}menu6* (Convertidores)
-├ *${prefix}menu7* (Audios)
-├ *${prefix}menu8* (Otros)
-├ *${prefix}menu9* (Generador Text Pro Me)
-├ *${prefix}menu10* (Generador Photo Oxy)
-├ *${prefix}menu11* (Generador Ephoto 360)
-│
-╰─ *FIN LISTA DE MENUS*
-` 
-                naze.sendMessage(m.chat, { text: Menu }, {quoted: fdoc})
-            }
-            break
-
-            case 'menu1': {
-                
-                let Menu1 = `
-╭───「 *Descargas* 」
-│
-├「 *YouTube* 」
-│
-├ *${prefix}ytplay* [nombre de la canción]
-│ Descarga un audio de youtube.
-│
-├ *${prefix}ytsearch* [nombre de la canción]
-│ Muestra una lista de links de youtube.
-│ 
-├ *${prefix}ytmp3* [link de youtube]
-│ Descarga un audio de youtube.
-│ 
-├ *${prefix}ytmp4* [link de youtube]
-│ Descarga un video de youtube.
-│
-├「 *TikTok* 」
-│
-├ *${prefix}tiktok* [link de tiktok]
-│ Descarga un video sin marca de agua.
-│
-├ *${prefix}tiktokwm* [link de tiktok]
-│ Descarga un video con marca de agua.
-│ 
-├ *${prefix}tiktomusic* [link de tiktok]
-│ Descarga la musica original del video.
-│ 
-├「 *Instagram* 」
-│
-├ *${prefix}igdl* [link de instagram]
-│ Descarga un video de instagram.
-│ 
-├「 *Facebook* 」
-│
-├ *${prefix}fbdl* [link de facebook]
-│ Descarga un video de facebook.
-│ 
-├「 *Twitter* 」
-│
-├ *${prefix}twtdl* [link de twitter]
-│ Descarga un video de twitter.
-│
-╰───
-` 
-                naze.sendMessage(m.chat, { text: Menu1 }, {quoted: fdoc})
-            }
-            break
-
-            case 'menu2': {
-                
-                let Menu2 = `
-╭───「 *Stickers* 」
-│
-├ *${prefix}sticker*
-│ Crea un sticker.
-│
-├ *${prefix}stickerwm*
-│ Crea un sticker con autor Nexus.
-│
-├ *${prefix}stickerp* [Package|Author]
-│ Crea un sticker con nombre personalizado.
-│
-├ *${prefix}renombrar* [Package|Author]
-│ Cambia el nombre de un sticker.
-│
-├ *${prefix}stickersinfondo*
-│ Crea un sticker sin fondo.
-│
-├ *${prefix}stickernobg*
-│ Crea un sticker sin fondo.
-│
-├ *${prefix}telesticker* [link de telegram]
-│ Envia stickers de telegram.
-│
-├ *${prefix}colores* [texto]
-│ Crea un sticker con el texto de colores.
-│
-╰───
-` 
-                naze.sendMessage(m.chat, { text: Menu2 }, {quoted: fdoc})
-            }
-            break
-
-            case 'sticker': {
-                let respuestacomando = `${global.mess.etiquetaimgvidl} *${prefix + command}*`
-                if ((!/image/.test(mime)) && (!/video/.test(mime))) throw respuestacomando
-
-                if (/image/.test(mime)) {
-                    let media = await quoted.download()
-                    let encmedia = await naze.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
-                    await fs.unlinkSync(encmedia)
-                } else if (/video/.test(mime)) {
-                    if ((quoted.msg || quoted).seconds > 11) return m.reply(`${global.mess.lims}`)
-                    let media = await quoted.download()
-                    let encmedia = await naze.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
-                    await fs.unlinkSync(encmedia)
-                } else {
-                    throw `${global.mess.error}`
-                    }
-                }
-            break
-
-            case 'sticker2': {
-                let respuestacomando = `${global.mess.etiquetaimgvidl} *${prefix + command}*`
-                if ((!/image/.test(mime)) && (!/video/.test(mime))) throw respuestacomando
-
-                if (/image/.test(mime)) {
-                    let media = await quoted.download()
-                    let encmedia = await naze.sendImageAsSticker(m.chat, media, m, { packname: ``, author: ``})
-                    await fs.unlinkSync(encmedia)
-                } else if (/video/.test(mime)) {
-                    if ((quoted.msg || quoted).seconds > 11) return m.reply(`${global.mess.lims}`)
-                    let media = await quoted.download()
-                    let encmedia = await naze.sendVideoAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
-                    await fs.unlinkSync(encmedia)
-                } else {
-                    throw `${global.mess.error}`
-                    }
-                }
-            break
-                
-            case 'stickersinfondo':{
-                let respuestacomando = `${global.mess.etiquetaimg} *${prefix + command}*`
-                if (!/image/.test(mime)) throw respuestacomando
-
-                try {       
-                let { TelegraPh } = require('./lib/uploader')
-                let cargador = await naze.downloadAndSaveMediaMessage(qmsg)
-                let link = await TelegraPh(cargador)
-                let contenido = `https://api.lolhuman.xyz/api/removebg?apikey=${global.apilol}&img=${link}`
-                let msjsticker = await naze.sendImageAsSticker(m.chat, contenido, m, { packname: global.packname, author: global.author })
-                await fs.unlinkSync(msjsticker)
-                } catch (e) {
-                m.reply(`${global.mess.error}`)
-                }
-            }
-            break
-        
-                
-                
             case 'menu': {
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
             let jawab = `*${ucapanWaktu}*
 ╭──❍「 𝙄𝙉𝙁𝙊 𝙐𝙎𝙀𝙍 」❍
-├ *Nombre* : ${pushname}
+├ *Nama* : ${pushname}
 ├ *Number* : @${me.split('@')[0]}
 ├ *Premium* : ${isPremium ? '✅' : `❌`}
 ├ *Limit* : ${isPremium ? '♾Infinity' : `〽️${db.data.users[m.sender].limit}`}
