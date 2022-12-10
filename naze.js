@@ -2093,7 +2093,15 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 m.reply(`Error\nHarus Pakai Gambar!`)
                 }
                 }
-            break  
+            break 
+            case 'colored': {
+                oh = `Example : ${prefix + command} 3\n\nIQRA Yang tersedia : 1,2,3,4,5,6`
+                if (!text) throw oh
+                yy = await getBuffer(`https://api.xteam.xyz/attp?file&text=${text}`)
+                naze.sendImageAsSticker(m.chat, yy, m, { packname: global.packname, author: global.author })
+                }
+                break
+            
             
             
             /**case 'nulis': case 'nulisteks': {
