@@ -3675,24 +3675,23 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
 
-            case 'play': case 'ytplay': {
+            case 'play': {
                 if (!text) throw `Example : ${prefix + command} story wa anime`
                 let yts = require("yt-search")
                 let search = await yts(text)
-                let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
+                let segmento = search.videos[Math.floor(Math.random() * search.videos.length)]
                 let buttons = [
-                    {buttonId: `${prefix}ytmp3 ${anu.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
-                    {buttonId: `${prefix}ytmp4 ${anu.url}`, buttonText: {displayText: '► Video'}, type: 1}
+                    {buttonId: `${prefix}ytmp3 ${segmento.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
+                    {buttonId: `${prefix}ytmp4 ${segmento.url}`, buttonText: {displayText: '► Video'}, type: 1}
                 ]
                 let buttonMessage = {
-                    image: { url: anu.thumbnail },
+                    image: { url: segmento.thumbnail },
                     caption: `
-⭔ Titulo: ${anu.title}
-⭔ ID Youtube: ${anu.videoId}
-⭔ Duración: ${anu.timestamp}
-⭔ Vistas: ${anu.views}
-⭔ Descripción: ${anu.description}
-⭔ Url : ${anu.url}`,
+*Titulo:* ${segmento.title}
+*ID Youtube:* ${segmento.videoId}
+*Duración:* ${segmento.timestamp}
+*Vistas:* ${segmento.views}
+*Url :* ${segmento.url}\n`,
                     
                     buttons: buttons,
                     headerType: 4
@@ -3722,7 +3721,7 @@ let alfamart = `628111500959@s.whatsapp.net`
                 try {
                 segmento = await fetchJson(`https://api.lolhuman.xyz/api/ytvideo?apikey=${global.apilol}&url=${text}`)
                 buffer = await getBuffer(segmento.result.link.link)
-                naze.sendMessage(m.chat, { video: buffer, mimetype: 'video/mp4', fileName: `${segmento.result.title}.mp4` , caption: `⭔ Titulo : ${segmento.result.title}\n`}, { quoted: m })
+                naze.sendMessage(m.chat, { video: buffer, mimetype: 'video/mp4', fileName: `${segmento.result.title}.mp4` , caption: `*${segmento.result.title}*\n`}, { quoted: m })
                 } catch (e) {
                 m.reply(`${global.mess.error}`)
                 }
