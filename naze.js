@@ -1017,18 +1017,6 @@ break
             }
             break
 
-            case 'req': case 'request': {
-            	if (!text) throw `Example : ${prefix + command} Fitur Min`
-               let ownernya = ownernomer + '@s.whatsapp.net'
-               let me = m.sender
-               let pjtxt = `Pesan Dari : @${me.split('@')[0]} \nUntuk : @${ownernya.split('@')[0]}\n\n${command} ${text}`
-               let ments = [ownernya, me]
-               let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: '🙏THANKS' }, type: 1 }]
-            await naze.sendButtonText(ownernya, buttons, pjtxt, nyoutube, m, {mentions: ments, quoted: fdoc})
-            let akhji = `*Request Telah Terkirim*\n*Ke Owner @${ownernya.split('@')[0]}*\n_Terima Kasih🙏_`
-            await naze.sendButtonText(m.chat, buttons, akhji, nyoutube, m, {mentions: ments, quoted: fkontak})
-            }
-            break
             case 'myip': {
                 if (!isCreator) throw mess.owner
                 var http = require('http')
@@ -1960,94 +1948,7 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
                 naze.sendContact(m.chat, global.owner, m)
             }
             break
-            /**case 'setmenu': {
-            if (!isCreator) throw mess.owner
-            let setbot = db.data.settings[botNumber]
-               if (args[0] === 'templateImage'){
-                setbot.templateImage = true
-                setbot.templateVideo = false
-                setbot.templateGif = false
-                setbot.templateMsg = false
-                m.reply(mess.success)
-                } else if (args[0] === 'templateVideo'){
-                setbot.templateImage = false
-                setbot.templateVideo = true
-                setbot.templateGif = false
-                setbot.templateMsg = false
-                m.reply(mess.success)
-                } else if (args[0] === 'templateGif'){
-                setbot.templateImage = false
-                setbot.templateVideo = false
-                setbot.templateGif = true
-                setbot.templateMsg = false
-                m.reply(mess.success)
-                } else if (args[0] === 'templateMessage'){
-                setbot.templateImage = false
-                setbot.templateVideo = false
-                setbot.templateGif = false
-                setbot.templateMsg = true
-                m.reply(mess.success)
-                } else {
-                let sections = [
-                {
-                title: "CHANGE MENU BOT",
-                rows: [
-                {title: "Template Image", rowId: `setmenu templateImage`, description: `Change menu bot to Template Image`},
-                {title: "Template Video", rowId: `setmenu templateVideo`, description: `Change menu bot to Template Video`},
-                {title: "Template Gif", rowId: `setmenu templateGif`, description: `Change menu bot to Template Gif`},
-                {title: "Template Message", rowId: `setmenu templateMessage`, description: `Change menu bot to Template Message`}
-                ]
-                },
-                ]
-                naze.sendListMsg(m.chat, `pilih aja *${pushname}* Setmenu nya!`, nyoutube, `*Hello Kak* !`, `Pilih Set Menu`, sections, m)
-                }
-            }
-            break**/
             
-//PEMBATAS CONVERT=======================================
-            
-
-
-
-         
-       
-            
-            
-            
-            /**case 'nulis': case 'nulisteks': {
-                let jawab = `Pilih Nulis Bro\n*1.nuliskanan (tekslu)*\n*2.nuliskiri (tekslu)*\n*3.foliokanan (tekslu)*\n*4.foliokiri (tekslu)*\n\n_Silahkan Dipilih_`
-                let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: 'MAGER AMAT🗿' }, type: 1 }]
-            await naze.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {quoted: fkontak})
-            }
-            break
-            case 'nuliskanan': {
-            m.reply(mess.wait)
-            const tulisan = body.slice(12)
-            const splitText = tulisan.replace(/(\S+\s*){1,9}/g, '$&\n')
-            const fixHeight = splitText.split('\n').slice(0, 31).join('\n')
-            spawn('convert', [
-                './media/image/nulis/images/buku/sebelumkanan.jpg',
-                '-font',
-                './image/nulis/font/Indie-Flower.ttf',
-                '-size',
-                '960x1280',
-                '-pointsize',
-                '23',
-                '-interline-spacing',
-                '2',
-                '-annotate',
-                '+128+129',
-                fixHeight,
-                './media/image/nulis/images/buku/setelahkanan.jpg'
-            ])
-                .on('error', () => m.reply('Gagal Karena Error'))
-                .on('exit', () => {
-                    naze.sendMessage(m.chat, { caption: global.mess.success, image: fs.readFileSync('./image/nulis/images/buku/setelahkanan.jpg') }, m)
-                    
-                })
-            db.data.users[m.sender].limit -= 1
-}
-            break**/
             case 'emoji': {
             	if (!text) throw 'Mana Emojinya?'
 			if (!q) return m.reply('emojinya?')
@@ -3904,6 +3805,171 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
 
+            case 'sound1':
+            case 'sound2':
+            case 'sound3':
+            case 'sound4':
+            case 'sound5':
+            case 'sound6':
+            case 'sound7':
+            case 'sound8':
+            case 'sound9':
+            case 'sound10':
+            case 'sound11':
+            case 'sound12':
+            case 'sound13':
+            case 'sound14':
+            case 'sound15':
+            case 'sound16':
+            case 'sound17':
+            case 'sound18':
+            case 'sound19':
+            case 'sound20':
+            case 'sound21':
+            case 'sound22':
+            case 'sound23':
+            case 'sound24':
+            case 'sound25':
+            case 'sound26':
+            case 'sound27':
+            case 'sound28':
+            case 'sound29':
+            case 'sound30':
+            case 'sound31':
+            case 'sound32':
+            case 'sound33':
+            case 'sound34':
+            case 'sound35':
+            case 'sound36':
+            case 'sound37':
+            case 'sound38':
+            case 'sound39':
+            case 'sound40':
+            case 'sound41':
+            case 'sound42':
+            case 'sound43':
+            case 'sound44':
+            case 'sound45':
+            case 'sound46':
+            case 'sound47':
+            case 'sound48':
+            case 'sound49':
+            case 'sound50':
+            case 'sound51':
+            case 'sound52':
+            case 'sound53':
+            case 'sound54':
+            case 'sound55':
+            case 'sound56':
+            case 'sound57':
+            case 'sound58':
+            case 'sound59':
+            case 'sound60':
+            case 'sound61':
+            case 'sound62':
+            case 'sound63':
+            case 'sound64':
+            case 'sound65':
+            case 'sound66':
+            case 'sound67':
+            case 'sound68':
+            case 'sound69':
+            case 'sound70':
+            case 'sound71':
+            case 'sound72':
+            case 'sound73':
+            case 'sound74':
+            case 'sound75':
+            case 'sound76':
+            case 'sound77':
+            case 'sound78':
+            case 'sound79':
+            case 'sound80':
+            case 'sound81':
+            case 'sound82':
+            case 'sound83':
+            case 'sound84':
+            case 'sound85':
+            case 'sound86':
+            case 'sound87':
+            case 'sound88':
+            case 'sound89':
+            case 'sound90':
+            case 'sound91':
+            case 'sound92':
+            case 'sound93':
+            case 'sound94':
+            case 'sound95':
+            case 'sound96':
+            case 'sound97':
+            case 'sound98':
+            case 'sound99':
+            case 'sound100':
+            case 'sound101':
+            case 'sound102':
+            case 'sound103':
+            case 'sound104':
+            case 'sound105':
+            case 'sound106':
+            case 'sound107':
+            case 'sound108':
+            case 'sound109':
+            case 'sound110':
+            case 'sound111':
+            case 'sound112':
+            case 'sound113':
+            case 'sound114':
+            case 'sound115':
+            case 'sound116':
+            case 'sound117':
+            case 'sound118':
+            case 'sound119':
+            case 'sound120':
+            case 'sound121':
+            case 'sound122':
+            case 'sound123':
+            case 'sound124':
+            case 'sound125':
+            case 'sound126':
+            case 'sound127':
+            case 'sound128':
+            case 'sound129':
+            case 'sound130':
+            case 'sound131':
+            case 'sound132':
+            case 'sound133':
+            case 'sound134':
+            case 'sound135':
+            case 'sound136':
+            case 'sound137':
+            case 'sound138':
+            case 'sound139':
+            case 'sound140':
+            case 'sound141':
+            case 'sound142':
+            case 'sound143':
+            case 'sound144':
+            case 'sound145':
+            case 'sound146':
+            case 'sound147':
+            case 'sound148':
+            case 'sound149':
+            case 'sound150':
+            case 'sound151':
+            case 'sound152':
+            case 'sound153':
+            case 'sound154':
+            case 'sound155':
+            case 'sound156':
+            case 'sound157':
+            case 'sound158':
+            case 'sound159':
+            case 'sound160':
+            case 'sound161':
+            naze_dev = await getBuffer(`https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/${command}.mp3`)
+            await naze.sendMessage(m.chat, { audio: naze_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: doc })     
+            break
+
             case 'menu': {
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
@@ -4699,170 +4765,7 @@ _Donasi Ngab_\n_Jangan Ngarep Free Mulu_`
             naze.sendMessage(m.chat, { caption: `${anu}`, location: { jpegThumbnail: await reSize(faall, 300, 200)}, buttons: buttons, footer: nyoutube, mentions: ments})
             }
             break
-case 'sound1':
-case 'sound2':
-case 'sound3':
-case 'sound4':
-case 'sound5':
-case 'sound6':
-case 'sound7':
-case 'sound8':
-case 'sound9':
-case 'sound10':
-case 'sound11':
-case 'sound12':
-case 'sound13':
-case 'sound14':
-case 'sound15':
-case 'sound16':
-case 'sound17':
-case 'sound18':
-case 'sound19':
-case 'sound20':
-case 'sound21':
-case 'sound22':
-case 'sound23':
-case 'sound24':
-case 'sound25':
-case 'sound26':
-case 'sound27':
-case 'sound28':
-case 'sound29':
-case 'sound30':
-case 'sound31':
-case 'sound32':
-case 'sound33':
-case 'sound34':
-case 'sound35':
-case 'sound36':
-case 'sound37':
-case 'sound38':
-case 'sound39':
-case 'sound40':
-case 'sound41':
-case 'sound42':
-case 'sound43':
-case 'sound44':
-case 'sound45':
-case 'sound46':
-case 'sound47':
-case 'sound48':
-case 'sound49':
-case 'sound50':
-case 'sound51':
-case 'sound52':
-case 'sound53':
-case 'sound54':
-case 'sound55':
-case 'sound56':
-case 'sound57':
-case 'sound58':
-case 'sound59':
-case 'sound60':
-case 'sound61':
-case 'sound62':
-case 'sound63':
-case 'sound64':
-case 'sound65':
-case 'sound66':
-case 'sound67':
-case 'sound68':
-case 'sound69':
-case 'sound70':
-case 'sound71':
-case 'sound72':
-case 'sound73':
-case 'sound74':
-case 'sound75':
-case 'sound76':
-case 'sound77':
-case 'sound78':
-case 'sound79':
-case 'sound80':
-case 'sound81':
-case 'sound82':
-case 'sound83':
-case 'sound84':
-case 'sound85':
-case 'sound86':
-case 'sound87':
-case 'sound88':
-case 'sound89':
-case 'sound90':
-case 'sound91':
-case 'sound92':
-case 'sound93':
-case 'sound94':
-case 'sound95':
-case 'sound96':
-case 'sound97':
-case 'sound98':
-case 'sound99':
-case 'sound100':
-case 'sound101':
-case 'sound102':
-case 'sound103':
-case 'sound104':
-case 'sound105':
-case 'sound106':
-case 'sound107':
-case 'sound108':
-case 'sound109':
-case 'sound110':
-case 'sound111':
-case 'sound112':
-case 'sound113':
-case 'sound114':
-case 'sound115':
-case 'sound116':
-case 'sound117':
-case 'sound118':
-case 'sound119':
-case 'sound120':
-case 'sound121':
-case 'sound122':
-case 'sound123':
-case 'sound124':
-case 'sound125':
-case 'sound126':
-case 'sound127':
-case 'sound128':
-case 'sound129':
-case 'sound130':
-case 'sound131':
-case 'sound132':
-case 'sound133':
-case 'sound134':
-case 'sound135':
-case 'sound136':
-case 'sound137':
-case 'sound138':
-case 'sound139':
-case 'sound140':
-case 'sound141':
-case 'sound142':
-case 'sound143':
-case 'sound144':
-case 'sound145':
-case 'sound146':
-case 'sound147':
-case 'sound148':
-case 'sound149':
-case 'sound150':
-case 'sound151':
-case 'sound152':
-case 'sound153':
-case 'sound154':
-case 'sound155':
-case 'sound156':
-case 'sound157':
-case 'sound158':
-case 'sound159':
-case 'sound160':
-case 'sound161':
-naze_dev = await getBuffer(`https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/${command}.mp3`)
-await naze.sendMessage(m.chat, { audio: naze_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: m })     
-break
+
             default:
                 if (budy.startsWith('=>')) {
                     if (!isCreator) return m.reply(mess.owner)
