@@ -207,7 +207,48 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
                 
 //Premium Exp
 prem.expiredCheck(naze, m, premium);
-                
+naze.ev.on('group-participants.update', async (anu) => {
+    console.log(anu)
+    try {
+        let metadata = await naze.groupMetadata(anu.id)
+        let participants = anu.participants
+        for (let num of participants) {
+            // Get Profile Picture User
+            try {
+                ppuser = await naze.profilePictureUrl(num, 'image')
+            } catch {
+                ppuser = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+            }
+            
+            //Resize
+     const reSize = async(buffer, ukur1, ukur2) => {
+         return new Promise(async(resolve, reject) => {
+         let jimp = require('jimp')
+         var baper = await jimp.read(buffer);
+         var ab = await baper.resize(ukur1, ukur2).getBufferAsync(jimp.MIME_JPEG)
+         resolve(ab)
+         })
+         }
+
+            // Get Profile Picture Group
+            try {
+                ppgroup = await naze.profilePictureUrl(anu.id, 'image')
+            } catch {
+                ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+            }
+            
+            let butwel = [{ buttonId: `${prefix}menu`, buttonText: { displayText: 'MENU' }, type: 1 }]
+            let footermsj = ('')
+            let teks1 = `*Hola @${num.split('@')[0]}*\n\n*Te doy la bienvenida al grupo:*\n*${metadata.subject}*\n\n*Por favor lee las reglas de uso ingresando el siguiente comando:* \n\n*${prefix}reglas*\n\nPara ver todos los comandos de *${global.botname}* escribe el siguiente comando:\n\n*${prefix}menu*\n`
+            if (anu.action == 'add') {
+                naze.sendMessage(anu.id, { caption: teks1, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butwel, footer: footermsj, mentions: [num] })
+            } 
+        }
+    } catch (err) {
+        console.log(err)
+    }
+})
+              
 //sticker url
 const sendStickerFromUrl = async(to, url) => {
                 var names = Date.now() / 10000;
