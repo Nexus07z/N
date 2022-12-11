@@ -1105,8 +1105,11 @@ break
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await naze.groupParticipantsUpdate(m.chat, [users], 'promote')
+        let promotemsj = `@${num.split('@')[0]} 🥳\n\n*¡FELICIDADES!*, te has convertido en administrador del grupo:*\n\n*${metadata.subject}*`
+        naze.sendMessage(m.chat, { text: promotemsj }, {quoted: fdoc})
 	}
 	break
+    
 	case 'demote': {
 		if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
@@ -1127,7 +1130,7 @@ break
 		await naze.updateBlockStatus(users, 'unblock')
 	}
 	break
-    
+
 	case 'addprem':
 				if (!isCreator) return m.reply(mess.owner)
 				{ q, args } {
