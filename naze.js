@@ -3687,10 +3687,10 @@ let alfamart = `628111500959@s.whatsapp.net`
                 let buttonMessage = {
                     image: { url: segmento.thumbnail },
                     caption: `
-*Titulo:* ${segmento.title}
-*ID Youtube:* ${segmento.videoId}
-*Duración:* ${segmento.timestamp}
-*Vistas:* ${segmento.views}
+*Titulo:* ${segmento.title}\n
+*ID Youtube:* ${segmento.videoId}\n
+*Duración:* ${segmento.timestamp}\n
+*Vistas:* ${segmento.views}\n
 *Url :* ${segmento.url}\n`,
                     
                     buttons: buttons,
@@ -3714,7 +3714,7 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
 
-            case 'ytmp32': {
+            case 'ytaudio': {
             	let respuestacomando = `${global.mess.linkcomando} *${prefix + command}*\n\n*Por ejemplo:*\n\n*${prefix + command} https://youtu.be/QQPgk_MkK4k*`
                 if (!text) throw respuestacomando
                 
@@ -3727,7 +3727,19 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
 
-
+            case 'ytaudio2': {
+            	let respuestacomando = `${global.mess.linkcomando} *${prefix + command}*\n\n*Por ejemplo:*\n\n*${prefix + command} https://youtu.be/QQPgk_MkK4k*`
+                if (!text) throw respuestacomando
+                
+                try {
+                segmento = await fetchJson(`https://api.lolhuman.xyz/api/ytaudio2?apikey=${global.apilol}&url=${text}`)
+                buffer = await getBuffer(segmento.result.link)
+                naze.sendMessage(m.chat, { audio: buffer, mimetype: 'audio/mpeg', fileName: `${segmento.result.title}.mp3` }, { quoted: m })
+                } catch (e) {
+                m.reply(`${global.mess.error}`)
+                }
+            }
+            break
 
             case 'ytmp4': {
             	let respuestacomando = `${global.mess.linkcomando} *${prefix + command}*\n\n*Por ejemplo:*\n\n*${prefix + command} https://youtu.be/QQPgk_MkK4k*`
@@ -3743,7 +3755,7 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
 
-            case 'ytmp42': {
+            case 'ytvideo': {
             	let respuestacomando = `${global.mess.linkcomando} *${prefix + command}*\n\n*Por ejemplo:*\n\n*${prefix + command} https://youtu.be/QQPgk_MkK4k*`
                 if (!text) throw respuestacomando
             
