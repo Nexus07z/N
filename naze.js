@@ -1105,7 +1105,7 @@ break
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await naze.groupParticipantsUpdate(m.chat, [users], 'promote')
-        let promotemsj = `${text} 🥳\n\n*¡FELICIDADES!*, te has convertido en admin. del grupo.\n`
+        let promotemsj = `@${text.split('@')[1]} 🥳\n\n*¡FELICIDADES!*, te has convertido en admin. del grupo.\n`
         naze.sendMessage(m.chat, { text: promotemsj }, {quoted: fdoc})
 	}
 	break
