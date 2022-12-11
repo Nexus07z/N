@@ -43,37 +43,32 @@ const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
 
-const hariini = moment.tz('Asia/Jakarta').format('dddd, DD MMMM YYYY')
-const hariiini = moment.tz('Asia/Jakarta').format('DD MMMM YYYY')
-const barat = moment.tz('Asia/Jakarta').format('HH:mm:ss')
-const tengah = moment.tz('Asia/Makassar').format('HH:mm:ss')
-const timur = moment.tz('Asia/Jayapura').format('HH:mm:ss')
-const nyoutube = ('© Naze\nYoutube/Sc :\nhttps://youtube.com/c/Nazedev')  //ubah di config biar ngk emror
+const peruf1 = moment.tz('America/Lima').format('dddd, DD MMMM YYYY')
+const peruf2 = moment.tz('America/Lima').format('DD MMMM YYYY')
+const perut = moment.tz('America/Lima').format('HH:mm:ss')
+
+const hariini = moment.tz('America/Lima').format('dddd, DD MMMM YYYY')
+const hariiini = moment.tz('America/Lima').format('DD MMMM YYYY')
+const barat = moment.tz('America/Lima').format('HH:mm:ss')
+const tengah = moment.tz('America/Lima').format('HH:mm:ss')
+const timur = moment.tz('America/Lima').format('HH:mm:ss')
 const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 global.prem = require("./lib/premium")
 gambar = fs.readFileSync('./media/image/assistant.jpg')
 
 //TIME
-const time2 = moment().tz('Asia/Jakarta').format('HH:mm:ss')  
+const time2 = moment().tz('America/Lima').format('HH:mm:ss')  
  if(time2 < "23:59:00"){
-var ucapanWaktu = 'Selamat Malam 🌌'
- }
- if(time2 < "19:00:00"){
-var ucapanWaktu = 'Selamat Sore 🌃'
+var ucapanWaktu = 'Buenas noches 🌌'
  }
  if(time2 < "18:00:00"){
-var ucapanWaktu = 'Selamat Sore 🌅'
+var ucapanWaktu = 'Buenas tardes 🌅'
  }
- if(time2 < "15:00:00"){
-var ucapanWaktu = 'Selamat Siang 🏙'
+ if(time2 < "12:00:00"){
+var ucapanWaktu = 'Buenos dias 🌄'
  }
- if(time2 < "11:00:00"){
-var ucapanWaktu = 'Selamat Pagi 🌄'
- }
- if(time2 < "05:00:00"){
-var ucapanWaktu = 'Selamat Pagi 🌉'
- } 
+  
  
 // read database
 let tebaklagu = db.data.game.tebaklagu = []
@@ -1014,32 +1009,7 @@ break
                 m.reply('https://wa.me/6285875158363')
             }
             break		 
-            case 'subsyt': {
-            let jawab = `*${ucapanWaktu}*\n*Silahkan Klik Link Ini*`
-            let buttons = [{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
-            let buttonMessage = {
-  document: fs.readFileSync('./media/doc/fake.pptx'),
-  fileName : akulaku + (` | Halo ${pushname}`),
-  mimetype: `${filsk}`,
-  fileLength: jumhal,
-  pageCount: jumlha,
-  caption: jawab,
-  footer: nyoutube,
-  buttons: buttons,
-  headerType: 4,
-  contextInfo:{externalAdReply:{
-  title: 'Naze Dev',
-  body: 'Subscribe My YouTube', 
-  showAdAttribution: true,
-  thumbnail: thumb,
-  mediaType:2,
-  mediaUrl: myytv,
-  sourceUrl: myyt
-  }}
-  }
-  naze.sendMessage(m.chat, buttonMessage, {quoted: fkontak})
-            	}
-            break
+            
             case 'ceklimit': case 'checklimit': case 'limit':{
 					m.reply('*Limit Lu :* ' + (db.data.users[m.sender].limit))
 					}
@@ -1049,7 +1019,7 @@ break
 			}
 			break
             case 'runtime': case 'tes': {
-            	let lowq = `*Bot Telah Online Selama*\n*${runtime(process.uptime())}*`
+            	let lowq = `*El Bot se encuentra en línea:*\n*${runtime(process.uptime())}*`
                 naze.sendMessage(m.chat, { text: lowq }, {quoted: fkontak})
                 naze.setStatus(`${naze.user.name} | Runtime : ${runtime(process.uptime())}`)
             	}
@@ -3700,10 +3670,10 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
 
-            case 'ytmp3': {
+            case 'ytmp3sl': {
             	let respuestacomando = `${global.mess.linkcomando} *${prefix + command}*\n\n*Por ejemplo:*\n\n*${prefix + command} https://youtu.be/QQPgk_MkK4k*`
                 if (!text) throw respuestacomando
-                
+                await m.reply(mess.comandoespera)
                 try {
                 segmento = await fetchJson(`https://api.lolhuman.xyz/api/ytaudio?apikey=${global.apilol}&url=${text}`)
                 buffer = await getBuffer(segmento.result.link.link)
@@ -3714,7 +3684,7 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
 
-            case 'ytmp3f': {
+            case 'ytmp3': {
             	let respuestacomando = `${global.mess.linkcomando} *${prefix + command}*\n\n*Por ejemplo:*\n\n*${prefix + command} https://youtu.be/QQPgk_MkK4k*`
                 if (!text) throw respuestacomando
                 
