@@ -1088,7 +1088,7 @@ break
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await naze.groupParticipantsUpdate(m.chat, [users], 'remove').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await naze.groupParticipantsUpdate(m.chat, [users], 'remove')
 	}
 	break
 	case 'add': {
@@ -1096,7 +1096,7 @@ break
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await naze.groupParticipantsUpdate(m.chat, [users], 'add').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await naze.groupParticipantsUpdate(m.chat, [users], 'add')
 	}
 	break
 	case 'promote': {
@@ -1104,7 +1104,7 @@ break
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await naze.groupParticipantsUpdate(m.chat, [users], 'promote').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await naze.groupParticipantsUpdate(m.chat, [users], 'promote')
 	}
 	break
 	case 'demote': {
@@ -1112,21 +1112,22 @@ break
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await naze.groupParticipantsUpdate(m.chat, [users], 'demote').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await naze.groupParticipantsUpdate(m.chat, [users], 'demote')
 	}
 	break
         case 'block': {
 		if (!isCreator) throw mess.owner
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await naze.updateBlockStatus(users, 'block').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await naze.updateBlockStatus(users, 'block')
 	}
 	break
         case 'unblock': {
 		if (!isCreator) throw mess.owner
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		await naze.updateBlockStatus(users, 'unblock').then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+		await naze.updateBlockStatus(users, 'unblock')
 	}
 	break
+    
 	case 'addprem':
 				if (!isCreator) return m.reply(mess.owner)
 				{ q, args } {
@@ -3968,6 +3969,26 @@ let alfamart = `628111500959@s.whatsapp.net`
             case 'sound161':
             naze_dev = await getBuffer(`https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/${command}.mp3`)
             await naze.sendMessage(m.chat, { audio: naze_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: fdoc })     
+            break
+            
+            case 'ytmp3': {
+            	let respuestacomando = `${global.mess.linkcomando} *${prefix + command}*\n\n*Por ejemplo:*\n\n*${prefix + command} https://youtu.be/QQPgk_MkK4k*`
+                if (!text) throw respuestacomando
+                
+                try {
+                segmento = await fetchJson(`https://api.lolhuman.xyz/api/ytaudio?apikey=${global.apilol}&url=${text}`)
+                    let [horas, minutos, segundos] = segmento.result.duration.split`:`
+                    let mediatime = parseFloat(horas*3600) + parseFloat(minutos*60) + parseFloat(segundos)
+                    if (mediatime > 600) {
+                        m.reply(`${global.mess.limm}`)
+                    } else {
+                        buffer = await getBuffer(segmento.result.link.link)
+                        naze.sendMessage(m.chat, { audio: buffer, mimetype: 'audio/mpeg', fileName: `${segmento.result.title}.mp3` }, { quoted: m })
+                    }
+                } catch (e) {
+                m.reply(`${global.mess.error}`)
+                }
+            }
             break
 
             case 'menu': {
