@@ -3967,7 +3967,7 @@ let alfamart = `628111500959@s.whatsapp.net`
             case 'sound160':
             case 'sound161':
             naze_dev = await getBuffer(`https://github.com/DGXeon/Tiktokmusic-API/raw/master/tiktokmusic/${command}.mp3`)
-            await naze.sendMessage(m.chat, { audio: naze_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: doc })     
+            await naze.sendMessage(m.chat, { audio: naze_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: fdoc })     
             break
 
             case 'menu': {
