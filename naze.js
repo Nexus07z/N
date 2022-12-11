@@ -3743,6 +3743,19 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
 
+            case 'ytmp42': {
+            	let respuestacomando = `${global.mess.linkcomando} *${prefix + command}*\n\n*Por ejemplo:*\n\n*${prefix + command} https://youtu.be/QQPgk_MkK4k*`
+                if (!text) throw respuestacomando
+            
+                try {
+                segmento = await fetchJson(`https://api.lolhuman.xyz/api/ytvideo?apikey=${global.apilol}&url=${text}`)
+                naze.sendMessage(m.chat, { video: { url: segmento.result.link.link }, mimetype: 'video/mp4', fileName: `${segmento.result.title}.mp4` , caption: `*${segmento.result.title}*\n`}, { quoted: m })
+                } catch (e) {
+                m.reply(`${global.mess.error}`)
+                }
+            }
+            break
+
         
 	    case 'getmusic': {
                 let { yta } = require('./lib/y2mate')
