@@ -46,7 +46,7 @@ const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, 
 const peruf1 = moment.tz('America/Lima').format('dddd, DD MMMM YYYY')
 const peruf2 = moment.tz('America/Lima').format('DD MMMM YYYY')
 const perut = moment.tz('America/Lima').format('HH:mm:ss')
-
+const nyoutube = ('© Naze\nYoutube/Sc :\nhttps://youtube.com/c/Nazedev')  //ubah di config biar ngk emror
 const hariini = moment.tz('America/Lima').format('dddd, DD MMMM YYYY')
 const hariiini = moment.tz('America/Lima').format('DD MMMM YYYY')
 const barat = moment.tz('America/Lima').format('HH:mm:ss')
@@ -263,7 +263,7 @@ const sendStickerFromUrl = async(to, url) => {
             console.log('Reseted Limit')
         }, {
             scheduled: true,
-            timezone: "Asia/Jakarta"
+            timezone: "America/Lima"
         })
         
         // total hit
@@ -997,33 +997,26 @@ naze.sendMessage(m.chat, {text: bot}, {quoted: ftelo})
 break
            
 //PEMBATAS ADMIN & OWNER=======================================
-            case 'totalfitur': case 'totalfiture': case 'fiture': case 'fitur': {
-            	m.reply('*Total Ada 300 Fitur*\n_Ketik Req Untuk Request Fitur_')
-            }
-            break
-            case 'donasi': case 'sewabot': case 'sewa': case 'buypremium': case 'donate': {
-                naze.sendMessage(m.chat, { image: fs.readFileSync('./media/image/naze.jpg'), caption: `*${ucapanWaktu} Kak ${m.pushName}*\n\n *Jika ingin berdonasi silahkan scan gambar diatas*\n\n*Jika ingin sewa bot atau premium*\n*Silahkan Chat Owner*\n\n*Atau klik link dibawah ini*\n_https://saweria.co/naze_\n\n*Atau Transfer via*\n- *Gopay Dana Ovo Qris ShopeePay*\n Ke nomer berikut : 082113821188\n\n_Terima kasih_` }, { quoted: m })
-            }
-            break
-            case 'sc': {
-                m.reply('https://wa.me/6285875158363')
-            }
-            break		 
             
-            case 'ceklimit': case 'checklimit': case 'limit':{
+        
+            	 
+            
+            case 'limite': {
 					m.reply('*Limit Lu :* ' + (db.data.users[m.sender].limit))
-					}
-					break 
+			}
+			break 
+
 		    case 'totalhit': case 'hit': {
 			m.reply(`*Total Hit : ${jumlahcmd}*\n*Total Hit Harian : ${jumlahharian}*`)
 			}
 			break
-            case 'runtime': case 'tes': {
-            	let lowq = `*El Bot se encuentra en línea:*\n*${runtime(process.uptime())}*`
-                naze.sendMessage(m.chat, { text: lowq }, {quoted: fkontak})
-                naze.setStatus(`${naze.user.name} | Runtime : ${runtime(process.uptime())}`)
-            	}
+
+            case 'runtime': {
+            	let timebot = `*El Bot se encuentra en línea:*\n*${runtime(process.uptime())}*`
+                naze.sendMessage(m.chat, { text: timebot }, {quoted: fdoc})
+            }
             break
+
             case 'req': case 'request': {
             	if (!text) throw `Example : ${prefix + command} Fitur Min`
                let ownernya = ownernomer + '@s.whatsapp.net'
