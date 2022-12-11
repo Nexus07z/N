@@ -3714,6 +3714,24 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
 
+            case 'ytmp3f': {
+            	let respuestacomando = `${global.mess.linkcomando} *${prefix + command}*\n\n*Por ejemplo:*\n\n*${prefix + command} https://youtu.be/QQPgk_MkK4k*`
+                if (!text) throw respuestacomando
+                
+                try {
+                segmento = await fetchJson(`https://api.lolhuman.xyz/api/ytaudio?apikey=${global.apilol}&url=${text}`)
+                    if ((segmento.result.duration).seconds > 600) {
+                        throw m.reply(`mayor a 10 minutos`)
+                    } else {
+                        buffer = await getBuffer(segmento.result.link.link)
+                        naze.sendMessage(m.chat, { audio: buffer, mimetype: 'audio/mpeg', fileName: `${segmento.result.title}.mp3` }, { quoted: m })
+                    }
+                } catch (e) {
+                m.reply(`${global.mess.error}`)
+                }
+            }
+            break
+
             case 'ytaudio': {
             	let respuestacomando = `${global.mess.linkcomando} *${prefix + command}*\n\n*Por ejemplo:*\n\n*${prefix + command} https://youtu.be/QQPgk_MkK4k*`
                 if (!text) throw respuestacomando
