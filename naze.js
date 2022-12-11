@@ -3721,8 +3721,12 @@ let alfamart = `628111500959@s.whatsapp.net`
                 try {
                 segmento = await fetchJson(`https://api.lolhuman.xyz/api/ytaudio?apikey=${global.apilol}&url=${text}`)
                     let [horas, minutos, segundos] = segmento.result.duration.split`:`
+                    var tiempos = segmento.result.duration.split(':')
                     let mediatime = horas*3600 + minutos*60 + segundos
+                    let mediatime2 = tiempos[0]*3600+tiempos[1]*60+tiempos[2]
+                    m.reply(`${segmento.result.duration}`)
                     m.reply(`${mediatime}`)
+                    m.reply(`${mediatime2}`)
                     if (mediatime > 600) {
                         throw m.reply(`mayor a 10 minutos`)
                     } else {
