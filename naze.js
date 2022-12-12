@@ -1059,6 +1059,7 @@ break
           m.reply(`Exif berhasil diubah menjadi\n\n⭔ Packname : ${global.packname}\n⭔ Author : ${global.author}`)
             }
             break
+
 	case 'retirar': {
 		if (!m.isGroup) throw mess.group
         if (!isBotAdmins) throw mess.botAdmin
@@ -1067,6 +1068,7 @@ break
 		await naze.groupParticipantsUpdate(m.chat, [users], 'remove')
 	}
 	break
+
 	case 'agregar': {
 		if (!m.isGroup) throw mess.group
         if (!isBotAdmins) throw mess.botAdmin
@@ -1111,40 +1113,54 @@ break
 	break
 
 	case 'addprem': {
-				if (!isCreator) return m.reply(mess.owner)
-				
-				prem.addPremiumUser(args[0] + "@s.whatsapp.net", args[1], premium);
-				naze.sendMessage(m.chat, { text: "Sukses Via Nomor" }, { quoted: fkontak });
-						
-					}
-	break
-			case 'delprem':
-				if (!isCreator) return m.reply(mess.owner)
-				{ q, args, arg } {
-				if (args.length < 1) return reply(`Penggunaan :\n*#delprem* @tag\n*#delprem* nomor`);
-				if (m.mentionedJid.length !== 0) {
-					for (let i = 0; i < m.mentionedJid.length; i++) {
-						premium.splice(prem.getPremiumPosition(m.mentionedJid[i], premium), 1);
-						fs.writeFileSync("./database/premium.json", JSON.stringify(premium));
-					}
-					naze.sendMessage(m.chat, { text: "Sukses Delete" }, { quoted: fkontak });
-				} else {
-				premium.splice(prem.getPremiumPosition(args[0] + "@s.whatsapp.net", premium), 1);
-				fs.writeFileSync("./database/premium.json", JSON.stringify(premium));
-				naze.sendMessage(m.chat, { text: "Sukses Via Nomer" }, { quoted: fkontak });
-				}
-				}
-				break
-		case 'listprem': {
-			if (!isCreator) return m.reply(mess.owner)
-			let data = require("./database/premium.json")
-			let txt = `*------「 LIST PREMIUM 」------*\n\n`
-                    for (let i of data) {
-                txt += `*Nomer : ${i.id}*\n*Expired : ${i.expired} Second*\n\n`
+        if (!isCreator) return m.reply(mess.owner)
+        { q, args } {
+        if (args.length < 2)
+        return m.reply(
+        `Penggunaan :\n*#addprem* @tag waktu\n*#addprem* nomor waktu\n\nContoh : #addprem @tag 30d`
+        );
+        if (m.mentionedJid.length !== 0) {
+        for (let i = 0; i < m.mentionedJid.length; i++) {
+        prem.addPremiumUser(m.mentionedJid[0], args[1], premium);
                 }
-            m.reply(txt)
-			}
-			break
+        naze.sendMessage(m.chat, { text: "Sukses Premium" }, { quoted: fkontak });
+            } else {
+        prem.addPremiumUser(args[0] + "@s.whatsapp.net", args[1], premium);
+        naze.sendMessage(m.chat, { text: "Sukses Via Nomor" }, { quoted: fkontak });
+                }
+            }
+    }
+    break
+
+    case 'delprem':
+        if (!isCreator) return m.reply(mess.owner)
+        { q, args, arg } {
+        if (args.length < 1) return reply(`Penggunaan :\n*#delprem* @tag\n*#delprem* nomor`);
+        if (m.mentionedJid.length !== 0) {
+            for (let i = 0; i < m.mentionedJid.length; i++) {
+                premium.splice(prem.getPremiumPosition(m.mentionedJid[i], premium), 1);
+                fs.writeFileSync("./database/premium.json", JSON.stringify(premium, null, 2));
+            }
+            naze.sendMessage(m.chat, { text: "Sukses Delete" }, { quoted: fkontak });
+        } else {
+        premium.splice(prem.getPremiumPosition(args[0] + "@s.whatsapp.net", premium), 1);
+        fs.writeFileSync("./database/premium.json", JSON.stringify(premium, null, 2));
+        naze.sendMessage(m.chat, { text: "Sukses Via Nomer" }, { quoted: fkontak });
+        }
+    }
+    break
+
+    case 'listapremium': {
+        if (!isCreator) return m.reply(mess.owner)
+        let data = require("./database/premium.json")
+        let txt = `*------「 LISTA PREMIUM 」------*\n\n`
+                for (let i of data) {
+            txt += `*Número : ${i.id}*\n*Expired : ${runtime(i.expired)} *\n\n`
+            }
+        m.reply(txt)
+    }
+    break
+
 	    case 'setname': case 'setsubject': {
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
