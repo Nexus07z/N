@@ -1032,50 +1032,24 @@ break
                 })
             }
             break
-            case 'tagme': {
-            if (!m.isGroup) throw mess.group
-            let me = m.sender
-            let jawab = `*@${me.split('@')[0]}*`
-            let ments = [me]
-            let buttons = [{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 }]
-            naze.sendMessage(m.chat, {react: {text: kloadq,key: m.key}})
-            await naze.sendButtonText(m.chat, buttons, jawab, nyoutube, m, {mentions: ments, quoted: fkontak})
-            }
-            break
-            case 'react': {
-                if (!isCreator) throw mess.owner
-                reactionMessage = {
-                    react: {
-                        text: args[0],
-                        key: m.key
-                    }
-                }
-                naze.sendMessage(m.chat, reactionMessage)
-            }
-            break  
-            case 'join': {
+          
+           
+            case 'entrabot': {
                 if (!isPremium) throw mess.premime
                 if (!text) throw 'Masukkan Link Group!'
                 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) throw 'Link Invalid!'
                 m.reply(mess.wait)
                 let result = args[0].split('https://chat.whatsapp.com/')[1]
-                await naze.groupAcceptInvite(result).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+                await naze.groupAcceptInvite(result)
             }
             break
-            case 'leave': {
+            
+            case 'salir': {
                 if (!isCreator) throw mess.owner
-                await naze.groupLeave(m.chat).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
+                await naze.groupLeave(m.chat)
             }
             break
-            case 'setowner': {
-               if (!isCreator) throw mess.owner
-               if (m.text.includes('@')) return m.reply(`*Invalid!*\n\n*Pake Nomer Woy*\n*Jangan Pakai Tag!*`)
-               if (!text) throw `Example : ${prefix + command} 6285875158363`
-              global.owner = text
-              global.ownernomer = text
-              m.reply(`Owner berhasil diubah menjadi\n\n⭔ Owner : ${global.owner}\n⭔ OwnerNumber : ${global.ownernomer}`)
-            }
-            break
+            
             case 'setexif': {
                if (!isCreator) throw mess.owner
                if (!text) throw `Example : ${prefix + command} packname|author`
@@ -1084,40 +1058,41 @@ break
           m.reply(`Exif berhasil diubah menjadi\n\n⭔ Packname : ${global.packname}\n⭔ Author : ${global.author}`)
             }
             break
-	case 'kick': {
+	case 'retirar': {
 		if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+        if (!isBotAdmins) throw mess.botAdmin
+        if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await naze.groupParticipantsUpdate(m.chat, [users], 'remove')
 	}
 	break
-	case 'add': {
+	case 'agregar': {
 		if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+        if (!isBotAdmins) throw mess.botAdmin
+        if (!isAdmins) throw mess.admin
 		let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await naze.groupParticipantsUpdate(m.chat, [users], 'add')
 	}
 	break
-	case 'promote': {
+    
+	case 'nuevoadmin': {
 		if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+        if (!isBotAdmins) throw mess.botAdmin
+        if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await naze.groupParticipantsUpdate(m.chat, [users], 'promote')
-        let promotemsj = `\n*¡FELICIDADES!*, te has convertido en admin. del grupo.\n`
-        naze.sendMessage(m.chat, { text: promotemsj }, {quoted: fdoc})
+        let promotemsj = `\n*El usuario ha sido ascendido, ahora es admin. del grupo.*\n`
+        naze.sendMessage(m.chat, { text: promotemsj }, {quoted: m})
 	}
 	break
     
-	case 'demote': {
+	case 'quitaradmin': {
 		if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+        if (!isBotAdmins) throw mess.botAdmin
+        if (!isAdmins) throw mess.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await naze.groupParticipantsUpdate(m.chat, [users], 'demote')
-        let demotemsj = `\n*Malas noticias*, ya no eres admin. del grupo.\n`
+        let demotemsj = `\n*El usuario ha sido descendido, ya no es admin. del grupo.*\n`
         naze.sendMessage(m.chat, { text: demotemsj }, {quoted: m})
 	}
 	break
