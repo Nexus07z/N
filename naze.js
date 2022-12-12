@@ -1158,9 +1158,11 @@ break
             txt += `*Número : @${i.id.split('@')[0]}*\n*Expira en:* ${runtime2((i.expired-Date.now()))}\n`
             
             }
-        m.reply(txt)
+      
+        naze.sendMessage(m.chat, { text: txt, mentions: participants.map(a => a.id) }, { quoted: m })
     }
     break
+
 
 	    case 'setname': case 'setsubject': {
                 if (!m.isGroup) throw mess.group
