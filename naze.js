@@ -54,6 +54,7 @@ const tengah = moment.tz('America/Lima').format('HH:mm:ss')
 const timur = moment.tz('America/Lima').format('HH:mm:ss')
 const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
+const premium = JSON.parse(fs.readFileSync('./database/premium.json'))
 global.prem = require("./lib/premium")
 gambar = fs.readFileSync('./media/image/assistant.jpg')
 
