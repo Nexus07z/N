@@ -41,7 +41,7 @@ const speed = require('performance-now')
 const { performance } = require('perf_hooks')
 const { Primbon } = require('scrape-primbon')
 const primbon = new Primbon()
-const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
+const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, runtime2, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
 
 const peruf1 = moment.tz('America/Lima').format('dddd, DD MMMM YYYY')
 const peruf2 = moment.tz('America/Lima').format('DD MMMM YYYY')
