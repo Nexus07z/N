@@ -1109,24 +1109,14 @@ break
 	}
 	break
 
-	case 'addprem':
+	case 'addprem': {
 				if (!isCreator) return m.reply(mess.owner)
-				{ q, args } {
-				if (args.length < 2)
-				return m.reply(
-				`Penggunaan :\n*#addprem* @tag waktu\n*#addprem* nomor waktu\n\nContoh : #addprem @tag 30d`
-				);
-				if (m.mentionedJid.length !== 0) {
-				for (let i = 0; i < m.mentionedJid.length; i++) {
-				prem.addPremiumUser(m.mentionedJid[0], args[1], premium);
-						}
-				naze.sendMessage(m.chat, { text: "Sukses Premium" }, { quoted: fkontak });
-					} else {
+				
 				prem.addPremiumUser(args[0] + "@s.whatsapp.net", args[1], premium);
 				naze.sendMessage(m.chat, { text: "Sukses Via Nomor" }, { quoted: fkontak });
-						}
+						
 					}
-				break
+	break
 			case 'delprem':
 				if (!isCreator) return m.reply(mess.owner)
 				{ q, args, arg } {
