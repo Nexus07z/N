@@ -1151,9 +1151,10 @@ break
     break
 
     case 'listapremium': {
-        if (!isCreator) return m.reply(mess.owner)
+        if (!m.isGroup) throw mess.grupo
+        if (!isCreator) return m.reply(mess.ownerB)
         let data = require("./database/premium.json")
-        let txt = `*──────「 LISTA PREMIUM 」*\n\n`
+        let txt = `*─────「 LISTA PREMIUM 」*\n\n`
                 for (let i of data) {
             txt += `*Número : @${i.id.split('@')[0]}*\n*Expira en:* ${runtime2((i.expired-Date.now()))}\n`
             
