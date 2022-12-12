@@ -53,7 +53,7 @@ global.mess = {
     error: '*Ocurrió un problema, puedes intentarlo nuevamente más tarde.*',
     errapi: 'Error Mungkin Apikey Tidak Valid!',
     errmor: 'Error Kesalahan Sistem',
-    endLimit: `[❗] *ALERTA*\n\nNo puedes usar este comando premium ya que has llegado al límite de comandos premium que tu usuario gratuito puede usar.\n\nTu usuario tiene un límite de uso de 10 comandos premium cada 12 horas, este límite se restablece cada 12 horas.\n\nPara monitorear cuantos comandos premium tienes disponible usa el siguiente comando:\n\n*${prefix}limite*\n\nSi te conviertes en miembro premium puedes usar los comandos premium sin limitaciones en el tiempo que dure tu suscripción.\n\nPara convertirte en usuario premium puedes consultar el siguiente comando:\n\n*${prefix}premium*\n`,
+    endLimit: `[❗] *ALERTA*\n\n*No puedes usar este comando premium.*\n\nHas llegado al *límite de comandos premium* que tu *usuario gratuito* puede usar.\n\nTu usuario tiene un límite de uso de 10 comandos premium cada 12 horas, este límite se restablece cada 12 horas.\n\nPara monitorear cuantos comandos premium tienes disponible usa el siguiente comando:\n\n*${prefix}limite*\n\nSi te conviertes en *usuario premium* puedes usar los comandos premium *sin limitaciones* en el tiempo que dure tu suscripción.\n\nPara convertirte en usuario premium puedes consultar el siguiente comando:\n\n*${prefix}premium*\n`,
 }
 
 // Limit
