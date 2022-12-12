@@ -21,7 +21,6 @@ global.APIKeys = {
 // Other
 global.owner = ['51963324153']
 global.ownernomer = "51963324153"
-global.premium = ['51963324153']
 global.packname = 'Sticker'
 global.author = 'Nexus'
 global.sessionName = 'nexusdev'  //jangan diganti bro nanti error
@@ -41,7 +40,7 @@ global.mess = {
     group: 'Fitur Digunakan Hanya Untuk Group!',
     private: 'Fitur Digunakan Hanya Untuk Private Chat!',
     bot: 'Fitur Khusus Pengguna Nomor Bot',
-    wait: 'Loading...',
+    comandoespera: '*Espera un momento por favor...*',
     etiquetaimg: 'Debes etiquetar una imagen con el comando: ',
     etiquetastick: 'Debes etiquetar un sticker con el comando: ',
     textocomando: 'Falta agregar texto dejando un espacio al lado del siguiente comando: ',
