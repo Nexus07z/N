@@ -1155,7 +1155,7 @@ break
         let data = require("./database/premium.json")
         let txt = `*------「 LISTA PREMIUM 」------*\n\n`
                 for (let i of data) {
-            txt += `*Número : ${i.id}*\n*Expired : ${runtime((i.expired-Date.now()))} *\n\n`
+            txt += `*Número : ${i.id}*\n*Expired : ${runtime2((i.expired-Date.now()))} *\n\n`
             }
         m.reply(txt)
     }
