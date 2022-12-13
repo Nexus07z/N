@@ -35,7 +35,8 @@ global.sp = ''
 // Limit
 global.limitawal = {
     premium: "Infinity",
-    free: 25
+    free: 25,
+    resetcron:12
 }
 
 // Setting Mess
@@ -61,7 +62,7 @@ global.mess = {
     error: '*Ocurrió un problema, puedes intentarlo nuevamente más tarde.*',
     errapi: 'Error Mungkin Apikey Tidak Valid!',
     errmor: 'Error Kesalahan Sistem',
-    endLimit: `[❗] *ALERTA*\n\n*No puedes usar este comando premium.*\n\nHas llegado al *límite de comandos premium* que tu *usuario gratuito* puede usar.\n\nTu usuario tiene un límite de uso de ${global.limituser.free} comandos premium cada ${global.limituser.resetcron} horas, este límite se restablece cada 12 horas.\n\nPara monitorear cuantos comandos premium tienes disponibles usa el siguiente comando:\n\n*${prefix}limite*\n\nSi te conviertes en *usuario premium* puedes usar los comandos premium *sin limitaciones* en el tiempo que dure tu suscripción.\n\nPara convertirte en usuario premium puedes consultar el siguiente comando:\n\n*${prefix}premium*\n`,
+    endLimit: `[❗] *ALERTA*\n\n*No puedes usar este comando premium.*\n\nHas llegado al *límite de comandos premium* que tu *usuario gratuito* puede usar.\n\nTu usuario tiene un límite de uso de ${global.limitawal.free} comandos premium cada ${global.limitawal.resetcron} horas, este límite se restablece cada 12 horas.\n\nPara monitorear cuantos comandos premium tienes disponibles usa el siguiente comando:\n\n*${prefix}limite*\n\nSi te conviertes en *usuario premium* puedes usar los comandos premium *sin limitaciones* en el tiempo que dure tu suscripción.\n\nPara convertirte en usuario premium puedes consultar el siguiente comando:\n\n*${prefix}premium*\n`,
 }
 
 // Fake
