@@ -3442,7 +3442,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 │
 ╰─ *FIN LISTA DE MENUS*
 ` 
-                naze.sendMessage(m.chat, { text: Menu }, {quoted: ftroli})
+                naze.sendMessage(m.chat, { text: Menu }, {quoted: ftoko})
             }
             break
 
@@ -3493,7 +3493,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 │
 ╰───
 ` 
-                naze.sendMessage(m.chat, { text: Menu1 }, {quoted: fvn})
+                naze.sendMessage(m.chat, { text: Menu1 }, {quoted: fgif})
             }
             break
 
@@ -3528,7 +3528,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 │
 ╰───
 ` 
-                naze.sendMessage(m.chat, { text: Menu2 }, {quoted: ftextt})
+                naze.sendMessage(m.chat, { text: Menu2 }, {quoted: fgclink})
             }
             break
 
