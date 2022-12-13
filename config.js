@@ -19,10 +19,10 @@ global.APIKeys = {
 }
 
 // Other
-global.owner = ['51963324153']
-global.ownernomer = "51963324153"
-global.creador = ['51963324153']
-global.numcreador = "51963324153"
+global.owner = ['51963324152']
+global.ownernomer = "51963324152"
+global.creador = ['51963324152']
+global.numcreador = "51963324152"
 global.packname = 'Sticker'
 global.author = 'Nexus'
 global.sessionName = 'nexusdev'
