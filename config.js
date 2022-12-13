@@ -34,10 +34,11 @@ global.sp = ''
 
 // Limit
 global.limitusuario = {
-    premium: "Infinity",
+    premium: 'Infinity',
     free: 10,
-    resetcron: 12
+    resetcron: "12"
 }
+
 // Setting Mess
 global.mess = {
     success: '✅Done',
