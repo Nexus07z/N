@@ -47,11 +47,6 @@ const peruf1 = moment.tz('America/Lima').format('dddd, DD MMMM YYYY')
 const peruf2 = moment.tz('America/Lima').format('DD MMMM YYYY')
 const perut = moment.tz('America/Lima').format('HH:mm:ss')
 const nyoutube = ('© Naze\nYoutube/Sc :\nhttps://youtube.com/c/Nazedev')  //ubah di config biar ngk emror
-const hariini = moment.tz('America/Lima').format('dddd, DD MMMM YYYY')
-const hariiini = moment.tz('America/Lima').format('DD MMMM YYYY')
-const barat = moment.tz('America/Lima').format('HH:mm:ss')
-const tengah = moment.tz('America/Lima').format('HH:mm:ss')
-const timur = moment.tz('America/Lima').format('HH:mm:ss')
 const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
 const premium = JSON.parse(fs.readFileSync('./database/premium.json'))
@@ -270,12 +265,13 @@ const sendStickerFromUrl = async(to, url) => {
         
         // total hit
         global.hit = {}
-if (isCmd) {
-data = await fetchJson('https://api.countapi.xyz/hit/naze-md/visits')
-jumlahcmd = `${data.value}`
-dataa = await fetchJson(`https://api.countapi.xyz/hit/naze-md${moment.tz('Asia/Jakarta').format('DDMMYYYY')}/visits`)
-jumlahharian = `${dataa.value}`
-}
+        if (isCmd) {
+            datatotal = await fetchJson('https://api.countapi.xyz/hit/NexusBot/visits')
+            visitatotal = `${datatotal.value}`
+            datadia = await fetchJson(`https://api.countapi.xyz/hit/NexusBot${moment.tz('Asia/Jakarta').format('DDMMYYYY')}/visits`)
+            visitadia = `${datadia.value}`
+        }
+       
 	// auto set bio
 	if (db.data.settings[botNumber].autobio) {
 	    let setting = global.db.data.settings[botNumber]
@@ -1009,7 +1005,7 @@ break
 			break 
 
 		    case 'totalhit': case 'hit': {
-			m.reply(`*Total Hit : ${jumlahcmd}*\n*Total Hit Harian : ${jumlahharian}*`)
+                m.reply(`*Total Hit : ${visitatotal}*\n*Total Hit Harian : ${visitadia}*`)
 			}
 			break
 
@@ -3423,6 +3419,104 @@ let alfamart = `628111500959@s.whatsapp.net`
                     await naze.sendButtonText(m.chat, buttons, jawab, naze.user.name, m, {mentions: ments})
             }
             break
+
+            case 'info': {
+                let ownernya = ownernomer + '@s.whatsapp.net'
+                let me = m.sender
+                let jawab = `*${ucapanWaktu}*
+    ╭──❍「 𝙄𝙉𝙁𝙊 𝙐𝙎𝙐𝘼𝙍𝙄𝙊 」❍
+    ├ *Nombre* : ${pushname}
+    ├ *Number* : @${me.split('@')[0]}
+    ├ *Premium* : ${isPremium ? '✅' : `❌`}
+    ├ *Limit* : ${isPremium ? '♾Infinity' : `〽️${db.data.users[m.sender].limit}`}
+    ╰──❍
+    
+    ╭──❍「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」❍
+    ├ *Nombre del Bot:* ${botname}
+    ├ *Powered* :\n├ *@${ini_mark.split('@')[0]}*
+    ├ *Owner* : @${ownernya.split('@')[0]}
+    ├ *Modo:* ${naze.public ? 'Público' : `Privado`}
+    ├ *Prefix* :「 ${prefix} 」
+    ├ *Total Hit* : ${visitatotal}
+    ├ *Total Hit Today* : ${visitadia}
+    ╰──❍
+    
+    ╭──❍「 𝙎𝙀𝙍𝙑𝙄𝘿𝙊𝙍 」❍
+    ├ *Fecha:*${peruf1}
+    ├ *Hora:*${perut}
+    ╰──❍`
+                let ments = [ownernya, me, ini_mark]
+                let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
+                let buttonMessage = {
+      document: fs.readFileSync('./media/doc/fake.pptx'),
+      fileName : akulaku + (` | Halo ${pushname}`),
+      mimetype: `${filsk}`,
+      fileLength: jumhal,
+      pageCount: jumlha,
+      caption: jawab,
+      footer: nyoutube,
+      buttons: buttons,
+      mentions: ments,
+      headerType: 4,
+      contextInfo:{externalAdReply:{
+      title: 'Naze Dev',
+      body: 'Subscribe My YouTube', 
+      showAdAttribution: true,
+      thumbnail: thumb,
+      mediaType: 2,
+      mediaUrl: myytv,
+      sourceUrl: myyt
+      }}
+      }
+      naze.sendMessage(m.chat, buttonMessage, {quoted: fkontak})
+      }
+     break
+            case 'simplemenu': case 'list': case 'help': {
+            let ownernya = ownernomer + '@s.whatsapp.net'
+            let me = m.sender
+            let ments = [ownernya, me, ini_mark]
+            let kukiw = `*Kak ${pushname}*`
+                let sections = [
+                {
+	           title: ' ∫ » Sewa Bot? –––––––·•',
+	           rows: [
+	            {title: "〽️ • Sewa", rowId: `donasi`, description: `KLIK UNTUK SEWA BOT`},
+                {title: "📴 • Owner", rowId: `owner`, description: `KLIK UNTUK BERTANYA KEPADA OWNER`}
+	            ]
+                },{
+                title: "⚠︎  ∫ » CHANGE MENU BOT « ✧",
+                rows: [
+                {title: "✦  「 Group 」", rowId: `mgroup`, description: `╰ ► 👥Fitur Buat Grup, Tapi Hati Hati Admin :v`},
+                {title: "✦  「 Webzone 」", rowId: `mwebzone`, description: `╰ ► 📹Cari Film? Sini Tempatnya 🤫`},
+                {title: "✦  「 Downloader 」", rowId: `mdownloader`, description: `╰ ► 📥Buat Download Apaan? 🤨`},
+                {title: "✦  「 Search 」", rowId: `msearch`, description: `╰ ► 🔍Cari Apa Hayo`},
+                {title: "✦  「 Random 」", rowId: `mrandom`, description: `╰ ► ❔Random Moment🗿`},
+                {title: "✦  「 Text Pro 」", rowId: `mtextpro`, description: `╰ ► ❇Teksnya Keren Kan?`},
+                {title: "✦  「 Photo Oxy 」", rowId: `mphotooxy`, description: `╰ ► ♻️Gabut Amat`},
+                {title: "✦  「 Ephoto 」", rowId: `mephoto`, description: `╰ ► 🗳Buat Edit Apaan?`},
+                {title: "✦  「 Fun 」", rowId: `mfun`, description: `╰ ► 🔫Buat Fun² Bro`},
+                {title: "✦  「 Primbon 」", rowId: `mprimbon`, description: `╰ ► 😂Ngakak`},
+                {title: "✦  「 Convert 」", rowId: `mconvert`, description: `╰ ► 🛠Mau Buat Apa?`},
+                {title: "✦  「 Main 」", rowId: `mmain`, description: `╰ ► 💾Senjata Admin & Owner`},
+                {title: "✦  「 Database 」", rowId: `mdatabase`, description: `╰ ► 📁Engak Ada Apa² Disini`},
+                {title: "✦  「 Anonymous 」", rowId: `manonymous`, description: `╰ ► 🎭Fitur Rahasia Jangan Dipake !`},
+                {title: "✦  「 Islamic 」", rowId: `mislamic`, description: `╰ ► 🕌Masyaallah Brother`},
+                {title: "✦  「 Voice 」", rowId: `mvoice`, description: `╰ ► 🎶Req Lagu Apa Ngab?`},
+                {title: "✦  「 Owner 」", rowId: `mowner`, description: `╰ ► 🎟Jangan Ganggu Ownerku😡`}
+                ]
+                },{
+	           title: ' ∫ » SUPPORT ME –––––––·•',
+	           rows: [
+	            {title: "🎟 • Donasi", rowId: `donasi`, description: `╰ ► 💰 Donasi ♕︎`},
+                {title: "🔴 • Subscribe", rowId: `subsyt`, description: `╰ ► 📢 Thanks For Subscribe ♕︎`},
+                {title: "📚 • Github", rowId: `sc`, description: `╰ ► 🎷 Follow My Github ♕︎`}
+	]
+  },
+]
+                naze.sendListMsg(m.chat, kukiw, nyoutube, `*${ucapanWaktu}*`, `Touch Me (⁠≧⁠▽⁠≦⁠)`, sections, fkontak)
+            }
+            break
+
             case 'comandos': {
                 
                 let Menu = `
@@ -3983,104 +4077,7 @@ let alfamart = `628111500959@s.whatsapp.net`
             }
             break
 
-            case 'menu': {
-            let ownernya = ownernomer + '@s.whatsapp.net'
-            let me = m.sender
-            let jawab = `*${ucapanWaktu}*
-╭──❍「 𝙄𝙉𝙁𝙊 𝙐𝙎𝙀𝙍 」❍
-├ *Nombre* : ${pushname}
-├ *Number* : @${me.split('@')[0]}
-├ *Premium* : ${isPremium ? '✅' : `❌`}
-├ *Limit* : ${isPremium ? '♾Infinity' : `〽️${db.data.users[m.sender].limit}`}
-╰──❍
-
-╭──❍「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」❍
-├ *Nama Bot* : ${botname}
-├ *Powered* :\n├ *@${ini_mark.split('@')[0]}*
-├ *Owner* : @${ownernya.split('@')[0]}
-├ *Mode* : ${naze.public ? 'Public' : `Self`}
-├ *Prefix* :「 MULTI-PREFIX 」
-├ *Total Hit* : ${jumlahcmd}
-├ *Total Hit Today* : ${jumlahharian}
-╰──❍
-
-╭──❍「 𝙄𝙉𝘿𝙊𝙉𝙀𝙎𝙄𝘼 」❍
-├ *Hari Ini* :\n├ *${hariini}*
-├ *Wib* : ${barat} WIB
-├ *Wita* : ${tengah} WITA
-├ *Wit* : ${timur} WIT
-╰──❍`
-            let ments = [ownernya, me, ini_mark]
-            let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
-            let buttonMessage = {
-  document: fs.readFileSync('./media/doc/fake.pptx'),
-  fileName : akulaku + (` | Halo ${pushname}`),
-  mimetype: `${filsk}`,
-  fileLength: jumhal,
-  pageCount: jumlha,
-  caption: jawab,
-  footer: nyoutube,
-  buttons: buttons,
-  mentions: ments,
-  headerType: 4,
-  contextInfo:{externalAdReply:{
-  title: 'Naze Dev',
-  body: 'Subscribe My YouTube', 
-  showAdAttribution: true,
-  thumbnail: thumb,
-  mediaType: 2,
-  mediaUrl: myytv,
-  sourceUrl: myyt
-  }}
-  }
-  naze.sendMessage(m.chat, buttonMessage, {quoted: fkontak})
-  }
- break
-            case 'simplemenu': case 'list': case 'help': {
-            let ownernya = ownernomer + '@s.whatsapp.net'
-            let me = m.sender
-            let ments = [ownernya, me, ini_mark]
-            let kukiw = `*Kak ${pushname}*`
-                let sections = [
-                {
-	           title: ' ∫ » Sewa Bot? –––––––·•',
-	           rows: [
-	            {title: "〽️ • Sewa", rowId: `donasi`, description: `KLIK UNTUK SEWA BOT`},
-                {title: "📴 • Owner", rowId: `owner`, description: `KLIK UNTUK BERTANYA KEPADA OWNER`}
-	            ]
-                },{
-                title: "⚠︎  ∫ » CHANGE MENU BOT « ✧",
-                rows: [
-                {title: "✦  「 Group 」", rowId: `mgroup`, description: `╰ ► 👥Fitur Buat Grup, Tapi Hati Hati Admin :v`},
-                {title: "✦  「 Webzone 」", rowId: `mwebzone`, description: `╰ ► 📹Cari Film? Sini Tempatnya 🤫`},
-                {title: "✦  「 Downloader 」", rowId: `mdownloader`, description: `╰ ► 📥Buat Download Apaan? 🤨`},
-                {title: "✦  「 Search 」", rowId: `msearch`, description: `╰ ► 🔍Cari Apa Hayo`},
-                {title: "✦  「 Random 」", rowId: `mrandom`, description: `╰ ► ❔Random Moment🗿`},
-                {title: "✦  「 Text Pro 」", rowId: `mtextpro`, description: `╰ ► ❇Teksnya Keren Kan?`},
-                {title: "✦  「 Photo Oxy 」", rowId: `mphotooxy`, description: `╰ ► ♻️Gabut Amat`},
-                {title: "✦  「 Ephoto 」", rowId: `mephoto`, description: `╰ ► 🗳Buat Edit Apaan?`},
-                {title: "✦  「 Fun 」", rowId: `mfun`, description: `╰ ► 🔫Buat Fun² Bro`},
-                {title: "✦  「 Primbon 」", rowId: `mprimbon`, description: `╰ ► 😂Ngakak`},
-                {title: "✦  「 Convert 」", rowId: `mconvert`, description: `╰ ► 🛠Mau Buat Apa?`},
-                {title: "✦  「 Main 」", rowId: `mmain`, description: `╰ ► 💾Senjata Admin & Owner`},
-                {title: "✦  「 Database 」", rowId: `mdatabase`, description: `╰ ► 📁Engak Ada Apa² Disini`},
-                {title: "✦  「 Anonymous 」", rowId: `manonymous`, description: `╰ ► 🎭Fitur Rahasia Jangan Dipake !`},
-                {title: "✦  「 Islamic 」", rowId: `mislamic`, description: `╰ ► 🕌Masyaallah Brother`},
-                {title: "✦  「 Voice 」", rowId: `mvoice`, description: `╰ ► 🎶Req Lagu Apa Ngab?`},
-                {title: "✦  「 Owner 」", rowId: `mowner`, description: `╰ ► 🎟Jangan Ganggu Ownerku😡`}
-                ]
-                },{
-	           title: ' ∫ » SUPPORT ME –––––––·•',
-	           rows: [
-	            {title: "🎟 • Donasi", rowId: `donasi`, description: `╰ ► 💰 Donasi ♕︎`},
-                {title: "🔴 • Subscribe", rowId: `subsyt`, description: `╰ ► 📢 Thanks For Subscribe ♕︎`},
-                {title: "📚 • Github", rowId: `sc`, description: `╰ ► 🎷 Follow My Github ♕︎`}
-	]
-  },
-]
-                naze.sendListMsg(m.chat, kukiw, nyoutube, `*${ucapanWaktu}*`, `Touch Me (⁠≧⁠▽⁠≦⁠)`, sections, fkontak)
-            }
-            break
+            
             case 'mgroup': {
 goup = `╭──❍ *Group Menu*
 │
