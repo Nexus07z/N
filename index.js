@@ -158,12 +158,24 @@ async function startNaze() {
                     ppgroup = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
                 }
                 
-                let butwel = [{ buttonId: `${prefix}menu`, buttonText: { displayText: 'MENU' }, type: 1 }]
-                let footermsj = ('')
-                let teks1 = `*Hola @${num.split('@')[0]}*\n\n*Te doy la bienvenida al grupo:*\n*${metadata.subject}*\n\n*Por favor lee las reglas de uso ingresando el siguiente comando:* \n\n*${prefix}reglas*\n\nPara ver todos los comandos de *${global.botname}* escribe el siguiente comando:\n\n*${prefix}menu*\n`
+                let butwel = [{ buttonId: 'menu', buttonText: { displayText: 'WELCOME' }, type: 1 }]
+                let butleav = [{ buttonId: 'subsyt', buttonText: { displayText: 'Sayonara👋' }, type: 1 }]
+                let butselamat = [{ buttonId: '', buttonText: { displayText: 'SELAMAT' }, type: 1 }]
+                let butsebar = [{ buttonId: '', buttonText: { displayText: 'SABAR' }, type: 1 }]
+                let nyoutube = ('© Naze\nYoutube/Sc :\nhttps://youtube.com/c/Nazedev')
+                let teks1 = `*Halo Kak @${num.split('@')[0]}*\n*Selamat Datang Di Grup*\n*${metadata.subject}*\n*Jangan Lupa Intro Yahh*\n_~Admin_`
+                let teks2 = `*Selamat Tinggal Kak @${num.split('@')[0]}*\n*Semoga Tenang Di Alam Sana*\n_~Admin_`
+                let teks3 = `*@${num.split('@')[0]} Promote From*\n*${metadata.subject}*\n*Selamat Anda Menjadi Admin*\n_~Jangan Semena Mena!_`
+                let teks4 = `*@${num.split('@')[0]} Demote From*\n*${metadata.subject}*\n_Kasihan Turun Pangkat🤭_`
                 if (anu.action == 'add') {
-                    naze.sendMessage(anu.id, { caption: teks1, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butwel, footer: footermsj, mentions: [num] })
-                } 
+                    naze.sendMessage(anu.id, { caption: teks1, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butwel, footer: nyoutube, mentions: [num] })
+                } else if (anu.action == 'remove') {
+                    naze.sendMessage(anu.id, { caption: teks2, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butleav, footer: nyoutube, mentions: [num] })
+                } else if (anu.action == 'promote') {
+                    naze.sendMessage(anu.id, { caption: teks3, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butselamat, footer: nyoutube, mentions: [num] })
+                } else if (anu.action == 'demote') {
+                    naze.sendMessage(anu.id, { caption: teks4, location: { jpegThumbnail: await reSize(ppuser, 100, 100)}, buttons: butsebar, footer: nyoutube, mentions: [num] })
+              }
             }
         } catch (err) {
             console.log(err)
