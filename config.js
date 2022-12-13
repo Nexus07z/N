@@ -32,6 +32,12 @@ global.jumlah = '1000000000'
 global.prefix = ['.']
 global.sp = ''
 
+// Limit
+global.limituser = {
+    premium: "Infinity",
+    free: 10,
+    resetcron: 12
+}
 // Setting Mess
 global.mess = {
     success: '✅Done',
@@ -58,13 +64,6 @@ global.mess = {
     endLimit: `[❗] *ALERTA*\n\n*No puedes usar este comando premium.*\n\nHas llegado al *límite de comandos premium* que tu *usuario gratuito* puede usar.\n\nTu usuario tiene un límite de uso de ${global.limituser.free} comandos premium cada ${global.limituser.resetcron} horas, este límite se restablece cada 12 horas.\n\nPara monitorear cuantos comandos premium tienes disponibles usa el siguiente comando:\n\n*${prefix}limite*\n\nSi te conviertes en *usuario premium* puedes usar los comandos premium *sin limitaciones* en el tiempo que dure tu suscripción.\n\nPara convertirte en usuario premium puedes consultar el siguiente comando:\n\n*${prefix}premium*\n`,
 }
 
-// Limit
-global.limituser = {
-    premium: "Infinity",
-    free: 10,
-    resetcron: 12
-}
-
 // Fake
 global.thumb = fs.readFileSync('./media/image/assistant.jpg')
 global.faall = fs.readFileSync('./media/image/assistant.jpg')
@@ -79,7 +78,6 @@ global.mygc = "https://chat.whatsapp.com/Cp1OJenk6Q9D9vgLjLU558"
 global.botname = 'Nexusᴮᴼᵀ'
 global.apilol = '4fda13ee5ed767eef2174d23'
 global.akulaku = 'Bot By Naze'
-
 
 
 let file = require.resolve(__filename)
