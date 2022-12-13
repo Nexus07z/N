@@ -3421,31 +3421,45 @@ let alfamart = `628111500959@s.whatsapp.net`
             break
 
             case 'info': {
-                
+
                 let creador = numcreador + '@s.whatsapp.net'
                 let me = m.sender
                 let info = `
-*${ucapanWaktu}*
-╭──❍「 𝙄𝙉𝙁𝙊 𝙐𝙎𝙐𝘼𝙍𝙄𝙊 」❍
+╭───「 𝙄𝙉𝙁𝙊 𝙐𝙎𝙐𝘼𝙍𝙄𝙊 」
+│
 ├ *Nombre:* ${pushname}
+│
 ├ *Número/Tag:* @${me.split('@')[0]}
+│
 ├ *Premium:* ${isPremium ? '✅' : `❌`}
+│
 ├ *Limite:* ${isPremium ? '♾Infinity' : `〽️${db.data.users[m.sender].limit}`}
-╰──❍
+│
+╰───
 
-╭──❍「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」❍
+╭───「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」
+│
 ├ *Nombre del Bot:* ${botname}
+│
 ├ *Creador* : @${creador.split('@')[0]}
+│
 ├ *Modo:* ${naze.public ? 'Público' : `Privado`}
+│
 ├ *Prefijo:* 「 ${prefix} 」
+│
 ├ *Usos en total:* ${visitatotal}
+│
 ├ *Usos de hoy:* ${visitadia}
-╰──❍
+│
+╰───
 
-╭──❍「 𝙎𝙀𝙍𝙑𝙄𝘿𝙊𝙍 」❍
+╭───「 𝙎𝙀𝙍𝙑𝙄𝘿𝙊𝙍 」
+│
 ├ *Fecha:* ${peruf1}
+│
 ├ *Hora:* ${perut}
-╰──❍
+│
+╰───
 `
                 naze.sendMessage(m.chat, { text: info, mentions: participants.map(a => a.id) }, {quoted: m})
             }
