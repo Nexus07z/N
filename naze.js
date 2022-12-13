@@ -3428,8 +3428,8 @@ let alfamart = `628111500959@s.whatsapp.net`
 ╭───「 𝙄𝙉𝙁𝙊 𝙐𝙎𝙐𝘼𝙍𝙄𝙊 」
 ├ *Nombre:* ${pushname}
 ├ *Número/Tag:* @${me.split('@')[0]}
-├ *Premium:* ${isPremium ? '✅' : `❌`}
-├ *Limite:* ${isPremium ? '♾Infinity' : `〽️${db.data.users[m.sender].limit}`}
+├ *Premium:* ${isPremium ? '✔️' : `❌`}
+├ *Limite:* ${isPremium ? 'Sin límites' : `${db.data.users[m.sender].limit}`}
 ╰───
 
 ╭───「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」
