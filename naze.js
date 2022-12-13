@@ -140,7 +140,7 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
 	
 	try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
-            let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
+            let limitUser = isPremium ? global.limituser.premium : global.limituser.free
             let user = global.db.data.users[m.sender]
             if (typeof user !== 'object') global.db.data.users[m.sender] = {}
             if (user) {
@@ -255,7 +255,7 @@ const sendStickerFromUrl = async(to, url) => {
         let cron = require('node-cron')
         cron.schedule('05 * * * *', () => {
             let user = Object.keys(global.db.data.users)
-            let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
+            let limitUser = isPremium ? global.limituser.premium : global.limituser.free
             for (let jid of user) global.db.data.users[jid].limit = limitUser
             console.log('Reseted Limit')
         }, {
@@ -995,7 +995,7 @@ break
             	 
             
             case 'limite': {
-                let limit = `${isPremium ? 'Eres un usuario sin límites' : `Tienes ${db.data.users[m.sender].limit} comandos premium disponibles, se renuevan cada 12 horas.`}`
+                let limit = `${isPremium ? '*Eres un usuario premium sin límites*' : `*Te quedan ${db.data.users[m.sender].limit} de ${global.limituser.free} comandos premium disponibles, se renuevan cada ${global.limituser.resetcron} horas.*`}`
                 naze.sendMessage(m.chat, { text: limit }, {quoted: m})	
 			}
 			break 
@@ -3425,7 +3425,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 ├ *Nombre:* ${pushname}
 ├ *Número/Tag:* @${me.split('@')[0]}
 ├ *Premium:* ${isPremium ? '✔️' : `❌`}
-├ *Limite:* ${isPremium ? 'Sin límites' : `${db.data.users[m.sender].limit} de 10 comandos premium\n│ cada 12 horas.`}
+├ *Limite:* ${isPremium ? 'Sin límites' : `${db.data.users[m.sender].limit} de ${global.limituser.free} comandos premium\n│ cada ${global.limituser.resetcron} horas.`}
 ╰───
 
 ╭───「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」
