@@ -140,7 +140,7 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
 	
 	try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
-            let limitUser = isPremium ? global.limituser.premium : global.limituser.free
+            let limitUser = isPremium ? global.limitusuario.premium : global.limitusuario.free
             let user = global.db.data.users[m.sender]
             if (typeof user !== 'object') global.db.data.users[m.sender] = {}
             if (user) {
@@ -253,9 +253,9 @@ const sendStickerFromUrl = async(to, url) => {
 
 	    // resetear limite cada 12 horas
         let cron = require('node-cron')
-        cron.schedule('05 * * * *', () => {
+        cron.schedule('01 * * * *', () => {
             let user = Object.keys(global.db.data.users)
-            let limitUser = isPremium ? global.limituser.premium : global.limituser.free
+            let limitUser = isPremium ? global.limitusuario.premium : global.limitusuario.free
             for (let jid of user) global.db.data.users[jid].limit = limitUser
             console.log('Reseted Limit')
         }, {
@@ -995,28 +995,28 @@ break
             case 'limite': {
                 if (m.isGroup) {
                     let me = m.sender
-                    let ments = [me]
-                    let limit = `${isPremium ? `*@${me.split('@')[0]} eres un usuario premium sin límites*` : `*@${me.split('@')[0]} te quedan ${db.data.users[m.sender].limit} de ${global.limituser.free} comandos premium disponibles, se renuevan cada ${global.limituser.resetcron} horas.*`}`
-                    naze.sendMessage(m.chat, { text: limit,mentions: participants.map(a => a.id) }, {quoted: m})
+                    let limitemsj = `${isPremium ? `*@${me.split('@')[0]} eres un usuario premium sin límites*` : `*@${me.split('@')[0]} te quedan ${db.data.users[m.sender].limit} de ${global.limitusuario.free} comandos premium disponibles, se renuevan cada ${global.limitusuario.resetcron} horas.*`}`
+                    naze.sendMessage(m.chat, { text: limitemsj, mentions: participants.map(a => a.id) }, {quoted: m})
                 } else {
-                    let limit = `${isPremium ? `*Eres un usuario premium sin límites*` : `*Te quedan ${db.data.users[m.sender].limit} de ${global.limituser.free} comandos premium disponibles, se renuevan cada ${global.limituser.resetcron} horas.*`}`
-                    naze.sendMessage(m.chat, { text: limit }, {quoted: m})
+                    let limitemsj = `${isPremium ? `*Eres un usuario premium sin límites*` : `*Te quedan ${db.data.users[m.sender].limit} de ${global.limitusuario.free} comandos premium disponibles, se renuevan cada ${global.limitusuario.resetcron} horas.*`}`
+                    naze.sendMessage(m.chat, { text: limitemsj }, {quoted: m})
                 }
 			}
 			break 
 
-		    case 'totalhit': case 'hit': {
-                m.reply(`*Total Hit : ${visitatotal}*\n*Total Hit Harian : ${visitadia}*`)
+		    case 'usos': {
+                let usosmsj = `*Usos en total:* ${visitatotal}\n\n*Usos de hoy:* ${visitadia}`
+                naze.sendMessage(m.chat, { text: usosmsj }, {quoted: m})
 			}
 			break
 
-            case 'runtime': {
-            	let timebot = `*El Bot se encuentra en línea:*\n*${runtime(process.uptime())}*`
-                naze.sendMessage(m.chat, { text: timebot }, {quoted: fdoc})
+            case 'tiempobot': {
+            	let tiempobot = `*El Bot se encuentra en línea:*\n*${runtime(process.uptime())}*`
+                naze.sendMessage(m.chat, { text: tiempobot }, {quoted: m})
             }
             break
 
-            case 'myip': {
+            case 'ip': {
                 if (!isCreator) throw mess.owner
                 var http = require('http')
                 http.get({
@@ -3430,7 +3430,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 ├ *Nombre:* ${pushname}
 ├ *Número/Tag:* @${me.split('@')[0]}
 ├ *Premium:* ${isPremium ? '✔️' : `❌`}
-├ *Límite:* ${isPremium ? 'Sin límites' : `${db.data.users[m.sender].limit} de ${global.limituser.free} comandos premium\n│ cada ${global.limituser.resetcron} horas.`}
+├ *Límite:* ${isPremium ? 'Sin límites' : `${db.data.users[m.sender].limit} de ${global.limitusuario.free} comandos premium\n│ cada ${global.limitusuario.resetcron} horas.`}
 ╰───
 
 ╭───「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」

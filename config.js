@@ -33,7 +33,7 @@ global.prefix = ['.']
 global.sp = ''
 
 // Limit
-global.limituser = {
+global.limitusuario = {
     premium: "Infinity",
     free: 10,
     resetcron: 12
