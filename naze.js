@@ -47,8 +47,8 @@ const peruf1 = moment.tz('America/Lima').format('dddd, DD MMMM YYYY')
 const peruf2 = moment.tz('America/Lima').format('DD MMMM YYYY')
 const perut = moment.tz('America/Lima').format('HH:mm:ss')
 const nyoutube = ('© Naze\nYoutube/Sc :\nhttps://youtube.com/c/Nazedev')  //ubah di config biar ngk emror
-const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
+const creadoruser = numcreador + '@s.whatsapp.net'
 const premium = JSON.parse(fs.readFileSync('./database/premium.json'))
 global.prem = require("./lib/premium")
 gambar = fs.readFileSync('./media/image/assistant.jpg')
@@ -3411,8 +3411,8 @@ let alfamart = `628111500959@s.whatsapp.net`
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
             let jawab = `*Bot by Naze Dev* 
--Creator :  @${ownernya.split('@')[0]}\n-Lu : @${me.split('@')[0]}\n-Powered  : @${ini_mark.split('@')[0]}\n- :  @${qontak.split('@')[0]}\n- :  @${dana.split('@')[0]}\n- :  @${shopeeotp.split('@')[0]}\n- :  @${shopee.split('@')[0]}\n- :  @${tokopedia.split('@')[0]}\n- :  @${smartfrend.split('@')[0]}\n- :  @${getcontact.split('@')[0]}\n- :  @${facebook.split('@')[0]}\n- :  @${pasarpolis.split('@')[0]}\n- :  @${getcontact.split('@')[0]}\n- :  @${kominfo.split('@')[0]}\n- :  @${alfamart.split('@')[0]}`
-            let ments = [ownernya, me, ini_mark, qontak, dana, shopeeotp, shopee, tokopedia, smartfrend, getcontact, facebook, pasarpolis, kominfo, alfamart]
+-Creator :  @${ownernya.split('@')[0]}\n-Lu : @${me.split('@')[0]}\n-Powered  :\n- :  @${qontak.split('@')[0]}\n- :  @${dana.split('@')[0]}\n- :  @${shopeeotp.split('@')[0]}\n- :  @${shopee.split('@')[0]}\n- :  @${tokopedia.split('@')[0]}\n- :  @${smartfrend.split('@')[0]}\n- :  @${getcontact.split('@')[0]}\n- :  @${facebook.split('@')[0]}\n- :  @${pasarpolis.split('@')[0]}\n- :  @${getcontact.split('@')[0]}\n- :  @${kominfo.split('@')[0]}\n- :  @${alfamart.split('@')[0]}`
+            let ments = [ownernya, me, qontak, dana, shopeeotp, shopee, tokopedia, smartfrend, getcontact, facebook, pasarpolis, kominfo, alfamart]
             let buttons = [
                         { buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 }
                     ]
@@ -3421,60 +3421,40 @@ let alfamart = `628111500959@s.whatsapp.net`
             break
 
             case 'info': {
-                let ownernya = ownernomer + '@s.whatsapp.net'
+                
+                let creador = numcreador + '@s.whatsapp.net'
                 let me = m.sender
-                let jawab = `*${ucapanWaktu}*
-    ╭──❍「 𝙄𝙉𝙁𝙊 𝙐𝙎𝙐𝘼𝙍𝙄𝙊 」❍
-    ├ *Nombre* : ${pushname}
-    ├ *Number* : @${me.split('@')[0]}
-    ├ *Premium* : ${isPremium ? '✅' : `❌`}
-    ├ *Limit* : ${isPremium ? '♾Infinity' : `〽️${db.data.users[m.sender].limit}`}
-    ╰──❍
-    
-    ╭──❍「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」❍
-    ├ *Nombre del Bot:* ${botname}
-    ├ *Powered* :\n├ *@${ini_mark.split('@')[0]}*
-    ├ *Owner* : @${ownernya.split('@')[0]}
-    ├ *Modo:* ${naze.public ? 'Público' : `Privado`}
-    ├ *Prefix* :「 ${prefix} 」
-    ├ *Total Hit* : ${visitatotal}
-    ├ *Total Hit Today* : ${visitadia}
-    ╰──❍
-    
-    ╭──❍「 𝙎𝙀𝙍𝙑𝙄𝘿𝙊𝙍 」❍
-    ├ *Fecha:*${peruf1}
-    ├ *Hora:*${perut}
-    ╰──❍`
-                let ments = [ownernya, me, ini_mark]
-                let buttons = [{ buttonId: 'allmenu', buttonText: { displayText: '📖List Menu' }, type: 1 },{ buttonId: 'rules', buttonText: { displayText: '❗Rules' }, type: 1 },{ buttonId: 'donasi', buttonText: { displayText: '🙏Donasi' }, type: 1 }]
-                let buttonMessage = {
-      document: fs.readFileSync('./media/doc/fake.pptx'),
-      fileName : akulaku + (` | Halo ${pushname}`),
-      mimetype: `${filsk}`,
-      fileLength: jumhal,
-      pageCount: jumlha,
-      caption: jawab,
-      footer: nyoutube,
-      buttons: buttons,
-      mentions: ments,
-      headerType: 4,
-      contextInfo:{externalAdReply:{
-      title: 'Naze Dev',
-      body: 'Subscribe My YouTube', 
-      showAdAttribution: true,
-      thumbnail: thumb,
-      mediaType: 2,
-      mediaUrl: myytv,
-      sourceUrl: myyt
-      }}
-      }
-      naze.sendMessage(m.chat, buttonMessage, {quoted: fkontak})
-      }
-     break
+                let info = `
+*${ucapanWaktu}*
+╭──❍「 𝙄𝙉𝙁𝙊 𝙐𝙎𝙐𝘼𝙍𝙄𝙊 」❍
+├ *Nombre:* ${pushname}
+├ *Número/Tag:* @${me.split('@')[0]}
+├ *Premium:* ${isPremium ? '✅' : `❌`}
+├ *Limite:* ${isPremium ? '♾Infinity' : `〽️${db.data.users[m.sender].limit}`}
+╰──❍
+
+╭──❍「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」❍
+├ *Nombre del Bot:* ${botname}
+├ *Creador* : @${creador.split('@')[0]}
+├ *Modo:* ${naze.public ? 'Público' : `Privado`}
+├ *Prefijo:* 「 ${prefix} 」
+├ *Usos en total:* ${visitatotal}
+├ *Usos de hoy:* ${visitadia}
+╰──❍
+
+╭──❍「 𝙎𝙀𝙍𝙑𝙄𝘿𝙊𝙍 」❍
+├ *Fecha:* ${peruf1}
+├ *Hora:* ${perut}
+╰──❍
+`
+                naze.sendMessage(m.chat, { text: info, mentions: participants.map(a => a.id) }, {quoted: m})
+            }
+            break
+                
             case 'simplemenu': case 'list': case 'help': {
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
-            let ments = [ownernya, me, ini_mark]
+            let ments = [ownernya, me]
             let kukiw = `*Kak ${pushname}*`
                 let sections = [
                 {
@@ -4467,8 +4447,8 @@ let buttons = [{ buttonId: 'simplemenu', buttonText: { displayText: '⬅️Back'
             case 'allmenu': {
             let ownernya = ownernomer + '@s.whatsapp.net'
             let me = m.sender
-            let ments = [ownernya, me, ini_mark]
-                anu = ` ∫ » *${ucapanWaktu}* « ✧\n⚠︎ *kak @${me.split('@')[0]}*\n♕︎ *Powered : @${ini_mark.split('@')[0]}*\n ∫ » *Creator : @${ownernya.split('@')[0]}*
+            let ments = [ownernya, me]
+                anu = ` ∫ » *${ucapanWaktu}* « ✧\n⚠︎ *kak @${me.split('@')[0]}*\n♕︎ *Powered : *\n ∫ » *Creator : @${ownernya.split('@')[0]}*
 ╭──❍ *Group Menu*
 │
 │⭔ ${prefix}linkgroup
