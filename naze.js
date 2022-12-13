@@ -140,7 +140,7 @@ module.exports = naze = async (naze, m, chatUpdate, store) => {
 	
 	try {
             let isNumber = x => typeof x === 'number' && !isNaN(x)
-            let limitUser = isPremium ? global.limitusuario.premium : global.limitusuario.free
+            let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
             let user = global.db.data.users[m.sender]
             if (typeof user !== 'object') global.db.data.users[m.sender] = {}
             if (user) {
@@ -255,7 +255,7 @@ const sendStickerFromUrl = async(to, url) => {
         let cron = require('node-cron')
         cron.schedule('01 * * * *', () => {
             let user = Object.keys(global.db.data.users)
-            let limitUser = isPremium ? global.limitusuario.premium : global.limitusuario.free
+            let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
             for (let jid of user) global.db.data.users[jid].limit = limitUser
             console.log('Reseted Limit')
         }, {
@@ -995,10 +995,10 @@ break
             case 'limite': {
                 if (m.isGroup) {
                     let me = m.sender
-                    let limitemsj = `${isPremium ? `*@${me.split('@')[0]} eres un usuario premium sin límites*` : `*@${me.split('@')[0]} te quedan ${db.data.users[m.sender].limit} de ${global.limitusuario.free} comandos premium disponibles, se renuevan cada ${global.limitusuario.resetcron} horas.*`}`
+                    let limitemsj = `${isPremium ? `*@${me.split('@')[0]} eres un usuario premium sin límites*` : `*@${me.split('@')[0]} te quedan ${db.data.users[m.sender].limit} de ${global.limitawal.free} comandos premium disponibles, se renuevan cada ${global.limitusuario.resetcron} horas.*`}`
                     naze.sendMessage(m.chat, { text: limitemsj, mentions: participants.map(a => a.id) }, {quoted: m})
                 } else {
-                    let limitemsj = `${isPremium ? `*Eres un usuario premium sin límites*` : `*Te quedan ${db.data.users[m.sender].limit} de ${global.limitusuario.free} comandos premium disponibles, se renuevan cada ${global.limitusuario.resetcron} horas.*`}`
+                    let limitemsj = `${isPremium ? `*Eres un usuario premium sin límites*` : `*Te quedan ${db.data.users[m.sender].limit} de ${global.limitawal.free} comandos premium disponibles, se renuevan cada ${global.limitusuario.resetcron} horas.*`}`
                     naze.sendMessage(m.chat, { text: limitemsj }, {quoted: m})
                 }
 			}
@@ -3430,7 +3430,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 ├ *Nombre:* ${pushname}
 ├ *Número/Tag:* @${me.split('@')[0]}
 ├ *Premium:* ${isPremium ? '✔️' : `❌`}
-├ *Límite:* ${isPremium ? 'Sin límites' : `${db.data.users[m.sender].limit} de ${global.limitusuario.free} comandos premium\n│ cada ${global.limitusuario.resetcron} horas.`}
+├ *Límite:* ${isPremium ? 'Sin límites' : `${db.data.users[m.sender].limit} de ${global.limitawal.free} comandos premium\n│ cada ${global.limitusuario.resetcron} horas.`}
 ╰───
 
 ╭───「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」

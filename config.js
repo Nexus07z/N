@@ -33,10 +33,9 @@ global.prefix = ['.']
 global.sp = ''
 
 // Limit
-global.limitusuario = {
-    premium: 'Infinity',
-    free: 10
-  
+global.limitawal = {
+    premium: "Infinity",
+    free: 25
 }
 
 // Setting Mess
