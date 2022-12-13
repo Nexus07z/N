@@ -3428,11 +3428,8 @@ let alfamart = `628111500959@s.whatsapp.net`
 ╭───「 𝙄𝙉𝙁𝙊 𝙐𝙎𝙐𝘼𝙍𝙄𝙊 」
 │
 ├ *Nombre:* ${pushname}
-│
 ├ *Número/Tag:* @${me.split('@')[0]}
-│
 ├ *Premium:* ${isPremium ? '✅' : `❌`}
-│
 ├ *Limite:* ${isPremium ? '♾Infinity' : `〽️${db.data.users[m.sender].limit}`}
 │
 ╰───
@@ -3440,15 +3437,10 @@ let alfamart = `628111500959@s.whatsapp.net`
 ╭───「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」
 │
 ├ *Nombre del Bot:* ${botname}
-│
 ├ *Creador* : @${creador.split('@')[0]}
-│
 ├ *Modo:* ${naze.public ? 'Público' : `Privado`}
-│
 ├ *Prefijo:* 「 ${prefix} 」
-│
 ├ *Usos en total:* ${visitatotal}
-│
 ├ *Usos de hoy:* ${visitadia}
 │
 ╰───
@@ -3456,7 +3448,6 @@ let alfamart = `628111500959@s.whatsapp.net`
 ╭───「 𝙎𝙀𝙍𝙑𝙄𝘿𝙊𝙍 」
 │
 ├ *Fecha:* ${peruf1}
-│
 ├ *Hora:* ${perut}
 │
 ╰───
