@@ -253,7 +253,7 @@ const sendStickerFromUrl = async(to, url) => {
 
 	// reset limit every 12 hours
         let cron = require('node-cron')
-        cron.schedule('01 * * * *', () => {
+        cron.schedule('05 * * * *', () => {
             let user = Object.keys(global.db.data.users)
             let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
             for (let jid of user) global.db.data.users[jid].limit = limitUser
@@ -3429,7 +3429,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 ├ *Nombre:* ${pushname}
 ├ *Número/Tag:* @${me.split('@')[0]}
 ├ *Premium:* ${isPremium ? '✔️' : `❌`}
-├ *Limite:* ${isPremium ? 'Sin límites' : `${db.data.users[m.sender].limit}`}
+├ *Limite:* ${isPremium ? 'Sin límites' : `${db.data.users[m.sender].limit} comandos premium\n│ cada 12 horas.`}
 ╰───
 
 ╭───「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」
