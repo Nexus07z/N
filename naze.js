@@ -251,7 +251,7 @@ const sendStickerFromUrl = async(to, url) => {
 	    const fakestatus = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "imageMessage": {"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc","mimetype": "image/jpeg","caption": `${botname}`,"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080,"width": 1079,"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=","fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69","mediaKeyTimestamp": "1610993486","jpegThumbnail": await reSize(thumb, 100, 100),"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="}}}
 		
 
-	// reset limit every 12 hours
+	    // resetear limite cada 12 horas
         let cron = require('node-cron')
         cron.schedule('05 * * * *', () => {
             let user = Object.keys(global.db.data.users)
@@ -263,26 +263,26 @@ const sendStickerFromUrl = async(to, url) => {
             timezone: "America/Lima"
         })
         
-        // total hit
+        // total de usos del bot
         global.hit = {}
         if (isCmd) {
             datatotal = await fetchJson('https://api.countapi.xyz/hit/NexusBot/visits')
             visitatotal = `${datatotal.value}`
-            datadia = await fetchJson(`https://api.countapi.xyz/hit/NexusBot${moment.tz('Asia/Jakarta').format('DDMMYYYY')}/visits`)
+            datadia = await fetchJson(`https://api.countapi.xyz/hit/NexusBot${moment.tz('America/Lima').format('DDMMYYYY')}/visits`)
             visitadia = `${datadia.value}`
         }
        
-	// auto set bio
-	if (db.data.settings[botNumber].autobio) {
-	    let setting = global.db.data.settings[botNumber]
-	    if (new Date() * 1 - setting.status > 1000) {
-		let uptime = await runtime(process.uptime())
-		await naze.setStatus(`${naze.user.name} | Runtime : ${runtime(uptime)}`)
-		setting.status = new Date() * 1
-	    }
-	}
+        // auto set bio
+        if (db.data.settings[botNumber].autobio) {
+            let setting = global.db.data.settings[botNumber]
+            if (new Date() * 1 - setting.status > 1000) {
+            let uptime = await runtime(process.uptime())
+            await naze.setStatus(`${naze.user.name} | Runtime : ${runtime(uptime)}`)
+            setting.status = new Date() * 1
+            }
+        }
 			
-	  // Anti Link
+	    // Anti Link
         if (db.data.chats[m.chat].antilink) {
         if (budy.match(`chat.whatsapp.com`)) {
         m.reply(`「 *ANTI LINK* 」\n\n*Kamu terdeteksi mengirim link group*, *maaf kamu akan di kick‼️,yang mau juga silahkan kirim link‼️*`)
@@ -297,9 +297,7 @@ const sendStickerFromUrl = async(to, url) => {
         }
         }
         
-      // Naze Dev
-      const deploy = (teks) => { naze.relayMessage(m.chat, { requestPaymentMessage: { Message: { extendedTextMessage: { text: teks, currencyCodeIso4217: 'IDR', requestFrom: '0@s.whatsapp.net', expiryTimestamp: 8000, amount: 1, background: thumb }}}}, {})}
-        
+
       // Mute Chat
       if (db.data.chats[m.chat].mute && !isAdmins && !isCreator) {
       return
@@ -829,10 +827,7 @@ Ketik *nyerah* untuk menyerah dan mengakui kekalahan`
                 }
             }
             break
-            case 'vrtx': {
-            	deploy('hehe')
-            	}
-            break
+        
             case 'poll': {
 if (!isCreator) return mess.owner
 if (!text) throw `Example : ${prefix + command} Owner Ganteng|Iya|Tidak`
@@ -1000,7 +995,8 @@ break
             	 
             
             case 'limite': {
-					m.reply('*Limit Lu :* ' + (db.data.users[m.sender].limit))
+                let limit = `${isPremium ? 'Eres un usuario sin límites' : `Tienes ${db.data.users[m.sender].limit} comandos premium disponibles, se renuevan cada 12 horas.`}`
+                naze.sendMessage(m.chat, { text: limit }, {quoted: m})	
 			}
 			break 
 
@@ -3429,7 +3425,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 ├ *Nombre:* ${pushname}
 ├ *Número/Tag:* @${me.split('@')[0]}
 ├ *Premium:* ${isPremium ? '✔️' : `❌`}
-├ *Limite:* ${isPremium ? 'Sin límites' : `${db.data.users[m.sender].limit} comandos premium\n│ cada 12 horas.`}
+├ *Limite:* ${isPremium ? 'Sin límites' : `${db.data.users[m.sender].limit} de 10 comandos premium\n│ cada 12 horas.`}
 ╰───
 
 ╭───「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」
