@@ -995,7 +995,8 @@ break
             case 'limite': {
                 let me = m.sender
                 let limit = `${isPremium ? `*@${me.split('@')[0]} eres un usuario premium sin límites*` : `*@${me.split('@')[0]} te quedan ${db.data.users[m.sender].limit} de ${global.limituser.free} comandos premium disponibles, se renuevan cada ${global.limituser.resetcron} horas.*`}`
-                naze.sendMessage(m.chat, { text: limit, mentions: participants.map(a => a.id) }, {quoted: m})	
+                naze.sendMessage(m.chat, { text: limit }, {mentions: ments, quoted: m})
+        
 			}
 			break 
 
