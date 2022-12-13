@@ -253,7 +253,7 @@ const sendStickerFromUrl = async(to, url) => {
 
 	    // resetear limite cada 12 horas
         let cron = require('node-cron')
-        cron.schedule('01 * * * *', () => {
+        cron.schedule('1 * * * *', () => {
             let user = Object.keys(global.db.data.users)
             let limitUser = isPremium ? global.limitawal.premium : global.limitawal.free
             for (let jid of user) global.db.data.users[jid].limit = limitUser
