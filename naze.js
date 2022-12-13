@@ -992,11 +992,10 @@ break
 //PEMBATAS ADMIN & OWNER=======================================
             
         
-            	 
-            
             case 'limite': {
-                let limit = `${isPremium ? '*Eres un usuario premium sin límites*' : `*Te quedan ${db.data.users[m.sender].limit} de ${global.limituser.free} comandos premium disponibles, se renuevan cada ${global.limituser.resetcron} horas.*`}`
-                naze.sendMessage(m.chat, { text: limit }, {quoted: m})	
+                let me = m.sender
+                let limit = `${isPremium ? '*@${me.split('@')[0]} eres un usuario premium sin límites*' : `*@${me.split('@')[0]} te quedan ${db.data.users[m.sender].limit} de ${global.limituser.free} comandos premium disponibles, se renuevan cada ${global.limituser.resetcron} horas.*`}`
+                naze.sendMessage(m.chat, { text: limit, mentions: participants.map(a => a.id) }, {quoted: m})	
 			}
 			break 
 
@@ -3425,7 +3424,7 @@ let alfamart = `628111500959@s.whatsapp.net`
 ├ *Nombre:* ${pushname}
 ├ *Número/Tag:* @${me.split('@')[0]}
 ├ *Premium:* ${isPremium ? '✔️' : `❌`}
-├ *Limite:* ${isPremium ? 'Sin límites' : `${db.data.users[m.sender].limit} de ${global.limituser.free} comandos premium\n│ cada ${global.limituser.resetcron} horas.`}
+├ *Límite:* ${isPremium ? 'Sin límites' : `${db.data.users[m.sender].limit} de ${global.limituser.free} comandos premium\n│ cada ${global.limituser.resetcron} horas.`}
 ╰───
 
 ╭───「 𝙄𝙉𝙁𝙊 𝘽𝙊𝙏 」
